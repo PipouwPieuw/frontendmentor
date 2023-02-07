@@ -46,6 +46,7 @@ img {
 }
 
 .app-product {
+  font-family: "Montserrat", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,6 +55,41 @@ img {
 }
 .app-product__box {
   display: flex;
+  max-width: 37.5rem;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  background: hsl(0deg, 0%, 100%);
+}
+.app-product__img-wrapper {
+  flex-basis: 50%;
+}
+.app-product__content {
+  flex-basis: 50%;
+  padding: 2rem;
+}
+.app-product__type {
+  display: block;
+  text-transform: uppercase;
+  color: hsl(228deg, 12%, 48%);
+  letter-spacing: 0.3125rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+.app-product__heading {
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: rel(20px);
+  line-height: 2rem;
+  color: hsl(212deg, 21%, 14%);
+  margin-bottom: 1.5rem;
+}
+.app-product__text {
+  color: hsl(228deg, 12%, 48%);
+  font-size: 0.875rem;
+  line-height: 1.4375rem;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=main.css.map */
