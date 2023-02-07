@@ -1,3 +1,7 @@
+@function rem($pxValue) {
+    @return calc($pxValue / 16px * 1rem); 
+}
+
 @mixin input-placeholder {
     &.placeholder {
         @content;
