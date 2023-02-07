@@ -1,0 +1,11 @@
+.app-product {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $primary2;
+	min-height: 100%;
+
+	&__box {
+		display: flex;
+	}
+}

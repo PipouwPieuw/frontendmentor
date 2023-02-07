@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  padding: 0;
+  font-weight: normal;
+  overflow-wrap: break-word;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  height: auto;
+}
+
+.app-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(30deg, 38%, 92%);
+  min-height: 100%;
+}
+.app-product__box {
+  display: flex;
+}
+
+/*# sourceMappingURL=main.css.map */
