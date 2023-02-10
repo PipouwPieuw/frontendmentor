@@ -1,0 +1,158 @@
+.app-rating {
+	background: $neutral6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: rem(15px);
+	font-family: $font;
+
+	&__box {
+		max-width: rem(412px);
+		background: $neutral5;
+		border-radius: rem(30px);
+		overflow: hidden;
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		@include transition(.2s);
+
+		&--next-step {
+			transform: translate(-100%);
+		}
+	}
+
+	&__step {
+		flex: 0 0 100%;
+		padding: rem(32px) rem(38px) rem(32px) rem(32px);
+
+		@include breakpoint(639px) {
+			padding: rem(20px);
+		}
+	}
+
+	&__icon-wrapper {
+		display: block;
+		width: rem(48px);
+		height: rem(48px);
+		margin-bottom: rem(32px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $neutral4;
+		border-radius: 50%;
+	}
+
+	&__title {
+		color: $neutral1;
+		font-weight: 700;
+		font-size: rem(27px);
+		line-height: rem(32px);
+		margin-bottom: rem(14px);
+	}
+
+	&__text {
+		color: $neutral2;
+		font-size: rem(15px);
+		line-height: rem(23px);
+		margin-bottom: rem(28px);
+
+		&:last-child {
+			margin-bottom: rem(24px);
+		}
+	}
+
+	&__rates {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-bottom: rem(30px);
+	}
+
+	&__item {
+		position: relative;
+	}
+
+	&__radio {		
+		width: rem(52px);
+		height: rem(52px);
+		position: absolute;
+		opacity: 0;
+
+		&:checked + label {
+			background: $primary;
+			color: $neutral1;
+		}
+	}
+
+	&__label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: rem(52px);
+		height: rem(52px);
+		border-radius: 50%;
+		background: $neutral4;
+		color: $neutral2;
+		cursor: pointer;
+		position: relative;
+		z-index: 1;
+		@include transition($transition);
+		transition-property: color, background;
+
+		@include breakpoint(374px) {
+			width: rem(44px);
+			height: rem(44px);
+		}
+	}
+
+	&__label:hover,
+	&__radio:focus:not(:checked) + label {
+		color: $neutral1;
+		background: $neutral2;
+	}
+
+	&__submit {
+		display: block;
+		width: 100%;
+		color: $neutral1;
+		background: $primary;
+		border-radius: rem(30px);
+		font-size: rem(16px);
+		line-height: rem(25px);
+		padding: rem(10px);
+		text-transform: uppercase;
+		cursor: pointer;
+		letter-spacing: rem(2px);
+		@include transition($transition);
+		transition-property: color, background;
+		border: 0;
+
+		&:hover {
+			background: $neutral1;
+			color: $primary;
+		}
+	}
+
+	&__validation {
+		text-align: center;
+	}
+
+	&__img {
+		margin: rem(10px) auto rem(32px) auto;
+	}
+
+	&__result {
+		display: inline-block;
+		font-size: rem(15px);
+		line-height: rem(21px);
+		padding: rem(6px) rem(16px) rem(5px) rem(16px);
+		border-radius: rem(16px);
+		background: $neutral4;
+		color: $primary;
+		margin-bottom: rem(29px);
+
+	}
+}

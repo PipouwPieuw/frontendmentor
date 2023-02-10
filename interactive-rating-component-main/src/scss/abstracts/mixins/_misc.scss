@@ -1,0 +1,48 @@
+@function rem($pxValue) {
+    @return calc($pxValue / 16px * 1rem); 
+}
+
+
+@mixin input-placeholder {
+    &.placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+
+    &::-webkit-input-placeholder {
+        @content;
+    }
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin absolutePos($offset: 0) {
+    position: absolute;
+    left: $offset;
+    right: $offset;
+    top: $offset;
+    bottom: $offset;
+}
