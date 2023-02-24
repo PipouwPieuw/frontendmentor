@@ -1,0 +1,41 @@
+@mixin transition($duration) {
+    -moz-transition: all $duration ease-in-out;
+    -webkit-transition: all $duration ease-in-out;
+    -o-transition: all $duration ease-in-out;
+    -ms-transition: all $duration ease-in-out;
+    transition: all $duration ease-in-out;
+}
+
+@mixin transitionType($type, $duration) {
+    -moz-transition: $type $duration ease-in-out;
+    -webkit-transition: $type $duration ease-in-out;
+    -o-transition: $type $duration ease-in-out;
+    -ms-transition: $type $duration ease-in-out;
+    transition: $type $duration ease-in-out;
+}
+  
+@mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+}
+  
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+  
+@mixin box-sizing($boxmodel) {
+    -webkit-box-sizing: $boxmodel;
+    -moz-box-sizing: $boxmodel;
+    box-sizing: $boxmodel;
+}
+  
+@mixin scale($scale) {
+    -webkit-transform: scale($scale);
+    -ms-transform: scale($scale);
+    -o-transform: scale($scale);
+    transform: scale($scale);
+}
