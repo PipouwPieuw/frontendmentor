@@ -1,0 +1,30 @@
+@mixin container {
+    max-width: $grid-row-width;
+    margin: 0px auto;
+
+    @include breakpoint(large down) {
+        max-width: 94rem;
+    }
+
+    @include breakpoint(medium down) {
+        max-width: 60rem;
+    }
+
+    @include breakpoint(small down) {
+        max-width: 100%;
+        padding: 0px 2rem;
+    }
+
+    @media screen and (max-width: 400px) {
+        padding: 0px 1.5rem;
+    }
+}
+
+@mixin row {
+    @include clearfix;
+    margin: 0px -1rem;
+
+    @include breakpoint(small down) {
+        margin: 0;
+    }
+}
