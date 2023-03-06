@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon.png">
+        <link rel="stylesheet" href="dist/css/main.css">
+        <script src="data.json"></script>
+        <script src="dist/js/scripts.min.js"></script>
+        <title>Expenses chart</title>
+    </head>
+    <body>
+        <main class="app_chart">
+            <div class="app_chart__box">
+                <section id="sec_header" class="app_chart__header sec_header sec_loading">
+                    <div class="sec_header__balance">
+                        <p class="sec_header__title">My balance</p>
+                        <span class="sec_header__amount">$921.48</span>
+                    </div>
+                    <img class="sec_header__logo" src="assets/img/logo.svg" alt="White circle overlapping with a black disc of same size" title="Logo">
+                </section>
+                <section id="sec_content" class="app_chart__content sec_content sec_loading">
+                    <h1 class="sec_content__title">Spending - Last 7 days</h1>
+                    <ul id="chart" class="sec_content__chart block_chart"></ul>
+                    <div class="sec_content__footer block_footer">
+                        <div class="block_footer__left">
+                            <p class="block_footer__label">Total this month</p>
+                            <span class="block_footer__total">$478.33</span>
+                        </div>
+                        <div class="block_footer__right">
+                            <span class="block_footer__percent">+2.4%</span>
+                            <p class="block_footer__label">from last month</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </body>
+</html>

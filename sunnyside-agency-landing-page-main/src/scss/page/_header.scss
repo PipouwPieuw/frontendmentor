@@ -1,0 +1,84 @@
+.sec_header {
+	position: absolute;
+	z-index: 99;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: rem(34px) rem(48px) rem(34px) rem(40px);
+	color: $neutral5;
+
+	&__nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;		
+	}
+
+	&__home {
+		display: block;
+		padding: rem(10px) 0;
+	}
+
+	&__logo {
+		width: rem(170px);
+	}
+
+	&__menu {
+
+		@include breakpointUp(640px) {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&__item {
+
+		&:not(:last-child) {
+			margin-right: rem(27px);
+		}
+	}
+
+	&__link {
+		display: block;
+
+		&--default {
+			padding: rem(10px);
+			font-size: rem(18px);
+			line-height: rem(25px);
+			font-weight: 600;
+			position: relative;
+
+			&:before {
+				content: "";
+				position: absolute;
+				bottom: rem(10px);
+				left: rem(10px);
+				right: calc(100% - rem(10px));
+				@include transition($transition);
+				height: rem(2px);
+				background: $neutral5;
+			}
+
+			&:hover:before {
+				right: rem(10px);
+			}
+		}
+
+		&--cta {
+			padding: rem(16px) rem(31px);
+			font-size: rem(15px);
+			line-height: rem(24px);
+			font-weight: 700;
+			text-transform: uppercase;
+			font-family: $fontTitles;
+			color: $neutral1;
+			background: $neutral5;
+			border-radius: rem(28px);
+			@include transition($transition);
+
+			&:hover {
+				background: $neutral5-25;
+				color: $neutral5;
+			}
+		}
+	}
+}

@@ -15,9 +15,11 @@
 	&__image {
 		display: block;
 		margin-bottom: rem(22px);
-		border-radius: rem(8px);
-		overflow: hidden;
 		position: relative;
+
+		img {
+			border-radius: rem(8px);
+		}
 	}
 
 	&__hover {
@@ -31,9 +33,10 @@
 			z-index: -1;
 			background: $primary2;
 			opacity: .5;
+			border-radius: rem(8px);
 		}
 
-		&:not(:hover) {
+		&:not(:hover):not(:focus) {
 			opacity: 0;
 		}
 	}

@@ -1,0 +1,243 @@
+.app_chart {
+	@include flexCenter;
+	min-height: 100vh;
+	padding: rem(16px);
+	background: $neutral3;
+	overflow: hidden;
+
+	&__box {
+		width: 100%;
+		max-width: rem(540px);
+	}
+}
+
+.sec_header {
+	background: $primary1;
+	color: $neutral4;
+	border-radius: rem(20px);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: rem(25px) rem(39px) rem(25px) rem(32px);
+	margin-bottom: rem(24px);
+	@include transition($transition);
+
+	@include breakpoint(639px) {
+		padding: 1rem 2.4375rem 1rem 1.5rem;
+		padding: rem(16px) rem(39px) rem(16px) rem(24px);
+	}
+
+	&.sec_loading {
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(rem(-10px));
+	}
+
+	&__title {
+		padding-top: rem(5px);
+		line-height: rem(20px);
+		margin-bottom: rem(10px);
+		letter-spacing: rem(.8px);
+
+		@include breakpoint(639px) {
+			font-size: rem(14px);
+			line-height: rem(20px);
+			margin-bottom: rem(7px);
+		}
+	}
+
+	&__amount {
+		font-size: rem(32px);
+		line-height: rem(40px);
+		font-weight: 700;
+
+		@include breakpoint(639px) {
+			font-size: rem(24px);
+			line-height: rem(32px);
+		}
+	}
+}
+
+.sec_content {
+	background: $neutral4;
+	color: $neutral1;
+	border-radius: rem(20px);
+	padding: rem(32px) rem(40px) rem(46px) rem(40px);
+	@include transition($transition);
+
+	@include breakpoint(639px) {
+		padding: rem(20px);
+	}
+
+	&.sec_loading {
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(rem(10px));
+	}
+
+	&__title {
+		font-size: rem(32px);
+		line-height: rem(40px);
+		font-weight: 700;
+		margin-bottom: rem(20px);
+
+		@include breakpoint(639px) {
+			font-size: rem(22px);
+		}
+	}
+}
+
+.block_chart {
+	display: flex;
+	margin: 0 rem(-9px);
+	padding-top: rem(48px);
+
+	@include breakpoint(639px) {
+		margin: 0 rem(-6px);
+		padding-top: rem(32px);
+	}
+
+	&__day {
+		flex: calc(100% / 7);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0 rem(9px);
+
+		@include breakpoint(639px) {
+			padding: 0 rem(6px);
+		}
+	}
+
+	&__amount {
+		height: rem(150px);
+		width: 100%;
+		display: flex;
+		align-items: flex-end;
+	}
+
+	&__percent {
+		width: 100%;
+		height: 0;
+		@include transition($transition);
+		position: relative;
+		outline: none;
+
+		&:before {
+			content: "";
+			@include absolutePos;
+			border-radius: rem(8px);
+			background: $primary1;
+			@include transition($transition);
+		}
+
+		&:hover:before,
+		&:focus:before {
+			opacity: .7;
+		}
+
+		&:not(:hover):not(:focus) .tooltip {
+			margin-top: rem(10px);
+			opacity: 0;
+		}
+
+		&--today:before {
+			background: $primary2;
+		}
+	}
+
+	&__label {
+		padding: rem(10px) 0;
+		font-size: rem(15px);
+		line-height: rem(16px);
+		color: $neutral2;
+
+		@include breakpoint(374px) {
+			font-size: rem(12px);
+		}
+	}
+}
+
+.tooltip {
+	position: absolute;
+	z-index: 1;
+	top: rem(-48px);
+	left: rem(-99px);
+	right: rem(-99px);
+	pointer-events: none;
+	display: flex;
+	justify-content: center;
+	@include transition($transition);
+
+	&__inner {
+		line-height: rem(40px);
+		background: $neutral1;
+		color: $neutral4;
+		border-radius: rem(6px);
+		font-weight: 700;
+		font-size: rem(18px);
+		padding: 0 rem(8px);
+
+	}
+}
+
+.block_footer {
+	margin-top: rem(24px);
+	border-top: rem(2px) solid $neutral3;
+	padding-top: rem(34px);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+
+	@include breakpoint(639px) {
+		margin-top: rem(15px);
+		padding-top: rem(25px);
+	}
+
+	&__right {
+		text-align: right;
+		padding-bottom: rem(3px);
+	}
+
+	&__label {
+		font-size: rem(18px);
+		line-height: rem(22px);
+		color: $neutral2;
+		letter-spacing: rem(.1px);
+
+		@include breakpoint(639px) {
+			font-size: rem(15px);
+		}
+	}
+
+	&__total {
+		display: block;
+		font-size: rem(48px);
+		line-height: rem(48px);
+		font-weight: 700;
+		color: $neutral1;
+
+		@include breakpointUp(640px) {
+			margin-top: rem(10px);
+		}
+
+		@include breakpoint(639px) {
+			font-size: rem(30px);
+			line-height: rem(40px);
+		}
+	}
+
+	&__percent {
+		display: block;
+		font-size: rem(18px);
+		font-weight: 700;
+
+		@include breakpointUp(640px) {
+			margin-bottom: rem(4px);
+		}
+
+		@include breakpoint(639px) {
+			font-size: rem(16px);
+		}
+	}
+}

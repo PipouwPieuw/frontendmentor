@@ -1,0 +1,35 @@
+.sec_hero {
+	height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: rem(195px);
+
+	&__bg {
+		@include absolutePos;
+		z-index: -1;
+	}
+
+	&__img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: bottom center;
+	}
+
+	&__title {
+		font-size: rem(56px);
+		line-height: rem(69px);
+		color: $neutral5;
+		font-family: $fontTitles;
+		font-weight: 900;
+		text-transform: uppercase;
+		letter-spacing: rem(8.75px);
+		margin-bottom: rem(97px);
+	}
+
+	&__arrow {
+		width: rem(30px);
+	}
+}
