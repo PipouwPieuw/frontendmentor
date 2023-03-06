@@ -1,0 +1,9 @@
+a,
+input[type="submit"] {
+    @include transition($transition);
+}
+
+input,
+select {
+    appearance: none;
+}
