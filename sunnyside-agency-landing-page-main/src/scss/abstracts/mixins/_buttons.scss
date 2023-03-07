@@ -1,0 +1,28 @@
+@mixin learnMore($color) {
+	font-size: rem(15px);
+	line-height: rem(25px);
+	font-family: $fontTitles;
+	font-weight: 900;
+	text-transform: uppercase;
+	position: relative;
+	letter-spacing: rem(1px);
+	padding: 0 rem(8px);
+	isolation: isolate;
+
+	&:before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border-radius: rem(28px);
+		height: rem(10px);
+		background: $color;
+		@include transition($transition);
+	}
+
+	&:not(:hover):before {
+		opacity: .25;
+	}
+}

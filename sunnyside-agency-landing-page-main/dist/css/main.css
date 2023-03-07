@@ -69,6 +69,7 @@ select {
 
 body {
   font-family: "Barlow", sans-serif;
+  color: hsl(212deg, 27%, 19%);
 }
 
 .sec_header {
@@ -183,6 +184,284 @@ body {
 }
 .sec_hero__arrow {
   width: 1.875rem;
+}
+
+.sec_blocks__row {
+  display: flex;
+}
+.sec_blocks__half {
+  flex: 0 0 50%;
+}
+
+.article_content,
+.article_visual,
+.article_visualtext {
+  display: flex;
+}
+.article_content:first-child,
+.article_visual:first-child,
+.article_visualtext:first-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.article_content__box {
+  width: 100%;
+  max-width: 45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article_content:first-child .article_content__box {
+  padding-left: 2.8125rem;
+}
+.article_content:last-child .article_content__box {
+  padding-right: 2.8125rem;
+}
+.article_content__inner {
+  width: 27.8125rem;
+  max-width: 100%;
+}
+.article_content__title {
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  line-height: 3.0625rem;
+  margin-bottom: 2rem;
+}
+.article_content__text {
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  color: hsl(232deg, 10%, 55%);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.008125rem;
+}
+.article_content__link {
+  display: inline-block;
+}
+.article_content__link--yellow {
+  font-size: 0.9375rem;
+  line-height: 1.5625rem;
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: 0.0625rem;
+  padding: 0 0.5rem;
+  isolation: isolate;
+}
+.article_content__link--yellow:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 1.75rem;
+  height: 0.625rem;
+  background: hsl(51deg, 100%, 49%);
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.article_content__link--yellow:not(:hover):before {
+  opacity: 0.25;
+}
+.article_content__link--pink {
+  font-size: 0.9375rem;
+  line-height: 1.5625rem;
+  font-family: "Fraunces", serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: 0.0625rem;
+  padding: 0 0.5rem;
+  isolation: isolate;
+}
+.article_content__link--pink:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 1.75rem;
+  height: 0.625rem;
+  background: hsl(7deg, 99%, 70%);
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.article_content__link--pink:not(:hover):before {
+  opacity: 0.25;
+}
+
+.article_visual--yellow {
+  background: hsl(51deg, 100%, 49%);
+}
+.article_visual--pink {
+  background: hsl(7deg, 99%, 70%);
+}
+
+.article_visualtext--green {
+  color: hsl(166deg, 40%, 24%);
+  background: #a3ddcf;
+}
+.article_visualtext--blue {
+  color: hsl(198deg, 62%, 26%);
+  background: #4fcdff;
+}
+.article_visualtext__box {
+  position: relative;
+}
+.article_visualtext__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 3.6875rem;
+}
+.article_visualtext__title, .article_visualtext__text {
+  max-width: 21.1875rem;
+}
+.article_visualtext__title {
+  font-family: "Fraunces", serif;
+  font-size: 1.75rem;
+  line-height: 2.1875rem;
+  font-weight: 900;
+  letter-spacing: -0.0125rem;
+  margin-bottom: 1.6875rem;
+}
+.article_visualtext__text {
+  font-size: 1rem;
+  line-height: 1.6875rem;
+  font-weight: 600;
+  letter-spacing: -0.006875rem;
+}
+
+.sec_testimonials {
+  padding: 10rem 0;
+}
+.sec_testimonials__container {
+  width: 100%;
+  max-width: 71.25rem;
+  margin: auto;
+}
+.sec_testimonials__title {
+  font-family: "Fraunces", serif;
+  font-size: 1.25rem;
+  line-height: 1.5625rem;
+  color: hsl(210deg, 4%, 67%);
+  text-transform: uppercase;
+  letter-spacing: 0.3125rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 5.0625rem;
+}
+.sec_testimonials__list {
+  display: flex;
+}
+.sec_testimonials__item {
+  flex: 0 0 33.3333333333%;
+  padding: 0 0.9375rem;
+}
+
+.art_testimonial {
+  text-align: center;
+}
+.art_testimonial__img {
+  width: 4.5rem;
+  border-radius: 50%;
+  margin: 0 auto 3.625rem auto;
+}
+.art_testimonial__text {
+  font-size: 1.125rem;
+  line-height: 2rem;
+  letter-spacing: -0.008125rem;
+  color: hsl(213deg, 9%, 39%);
+  margin-bottom: 4.3125rem;
+}
+.art_testimonial__author {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  font-weight: 900;
+  margin-bottom: 0.5625rem;
+  letter-spacing: -0.0075rem;
+}
+.art_testimonial__job {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.5625rem;
+  font-weight: 600;
+  letter-spacing: -0.00625rem;
+  color: hsl(210deg, 4%, 67%);
+}
+
+.sec_images {
+  display: flex;
+}
+.sec_images__item {
+  flex: 0 0 25%;
+}
+
+.sec_footer {
+  background: hsl(168deg, 44%, 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4.5rem 0.9375rem;
+}
+.sec_footer__logo {
+  width: 10.625rem;
+  margin-bottom: 2.5rem;
+}
+.sec_footer__main_nav {
+  margin-bottom: 5.5rem;
+}
+.sec_footer__menu {
+  display: flex;
+  align-items: center;
+}
+.sec_footer__main_nav_item:not(:last-child) {
+  margin-right: 3.5625rem;
+}
+.sec_footer__social_nav_item:not(:last-child) {
+  margin-right: 1.75rem;
+}
+.sec_footer__main_nav_link {
+  font-size: 1.125rem;
+  line-height: 1.5625rem;
+  font-weight: 600;
+  letter-spacing: -0.008125rem;
+  color: hsl(168deg, 34%, 41%);
+}
+.sec_footer__main_nav_link:hover {
+  color: hsl(0deg, 0%, 100%);
+}
+.sec_footer__social_nav_link:hover path {
+  fill: hsl(0deg, 0%, 100%);
+}
+.sec_footer__social_nav_icon {
+  width: 1.25rem;
+}
+.sec_footer__social_nav_icon path {
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 /*# sourceMappingURL=main.css.map */
