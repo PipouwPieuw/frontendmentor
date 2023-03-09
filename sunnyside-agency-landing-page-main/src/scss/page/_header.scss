@@ -7,6 +7,11 @@
 	padding: rem(34px) rem(48px) rem(34px) rem(40px);
 	color: $neutral5;
 
+	@include breakpoint(767px) {
+		padding: rem(22px);
+		color: $neutral3;
+	}
+
 	&__nav {
 		display: flex;
 		justify-content: space-between;
@@ -19,21 +24,65 @@
 	}
 
 	&__logo {
-		width: rem(170px);
+
+		@include breakpointUp(768px) {
+			width: rem(170px);
+		}
+		
+		@include breakpoint(767px) {
+			height: rem(24px);
+		}
 	}
 
 	&__menu {
+		display: flex;
+		align-items: center;
 
-		@include breakpointUp(640px) {
-			display: flex;
-			align-items: center;
+		@include breakpoint(767px) {
+			flex-direction: column;
+			position: absolute;
+			left: rem(22px);
+			right: rem(22px);
+			top: rem(106px);
+			padding-top: rem(29px);
+			padding-bottom: rem(29px);
+			background: $neutral5;
+			@include transition($transition);
+
+			&:before {
+				content: "";
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 0 rem(24px) rem(24px);
+				border-color: transparent transparent $neutral5 transparent;
+				position: absolute;
+				top: rem(-24px);
+				right: 0;
+			}
+
+			&:not(.open) {
+				opacity: 0;
+				pointer-events: none;
+				top: rem(116px);
+			}
 		}
 	}
 
 	&__item {
 
-		&:not(:last-child) {
-			margin-right: rem(27px);
+		@include breakpointUp(768px) {
+
+			&:not(:last-child) {
+				margin-right: rem(27px);
+			}
+		}
+
+		@include breakpoint(767px) {			
+
+			&:not(:last-child) {
+				margin-bottom: rem(15px);
+			}
 		}
 	}
 
@@ -42,10 +91,17 @@
 
 		&--default {
 			padding: rem(10px);
-			font-size: rem(18px);
 			line-height: rem(25px);
 			font-weight: 600;
 			position: relative;
+
+			@include breakpointUp(768px) {
+				font-size: rem(18px);
+			}
+
+			@include breakpoint(767px) {
+				font-size: rem(20px);
+			}
 
 			&:before {
 				content: "";
@@ -71,14 +127,80 @@
 			text-transform: uppercase;
 			font-family: $fontTitles;
 			color: $neutral1;
-			background: $neutral5;
 			border-radius: rem(28px);
 			@include transition($transition);
 
-			&:hover {
-				background: $neutral5-25;
-				color: $neutral5;
+			@include breakpointUp(768px) {
+				background: $neutral5;
+
+				&:hover {
+					background: $neutral5-25;
+					color: $neutral5;
+				}
+			}
+
+			@include breakpoint(767px) {
+				background: $primary2;
+				margin-top: rem(11px);
 			}
 		}
 	}
+
+	&__hamburger {
+		width: rem(25px);
+		height: rem(22px);
+		position: relative;
+		@include rotate(0deg);
+		@include transition(0.5s);
+
+		@include breakpointUp(768px) {
+			display: none;
+		}
+
+		span {
+		    display: block;
+		    position: absolute;
+		    height: rem(3px);
+		    width: 100%;
+		    background: $neutral5;
+		    border-radius: rem(15px);
+		    opacity: 1;
+		    left: 0;
+			@include rotate(0deg);
+		    @include transition(0.25s);
+
+		    &:nth-child(1) {
+		        top: 0;
+		    }
+
+		    &:nth-child(2) {
+		        top: rem(9px);
+		        width: rem(18px);
+		    }
+
+		    &:nth-child(3) {
+		        top: rem(18px);
+		    }
+		}
+
+		&.open {
+		    span {
+		        &:nth-child(1) {
+		        	top: rem(9px);
+					@include rotate(135deg);
+		        }
+
+		        &:nth-child(2) {
+		            opacity: 0;
+		            left: rem(-2px);
+		            width: 0;
+		        }
+
+		        &:nth-child(3) {
+		            top: 0.5625rem;
+					@include rotate(-135deg);
+		        }
+		    }
+		}
+	}		
 }

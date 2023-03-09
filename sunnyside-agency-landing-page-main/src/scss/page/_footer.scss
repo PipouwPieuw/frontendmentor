@@ -26,7 +26,14 @@
 	&__main_nav_item {
 
 		&:not(:last-child) {
-			margin-right: rem(57px);
+
+			@include breakpointUp(375px) {
+				margin-right: rem(57px);
+			}
+
+			@include breakpoint(374px) {
+				margin-right: rem(32px);
+			}
 		}
 	}
 

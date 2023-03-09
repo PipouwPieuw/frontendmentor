@@ -1,7 +1,26 @@
 .sec_blocks {
 
 	&__row {
-		display: flex;
+
+		@include breakpointUp(640px) {
+			display: flex;
+		}
+
+
+		&--reverse {
+
+			@include breakpointUp(640px) {
+				flex-direction: row-reverse;
+			}
+
+			@include breakpointUp(1200px) {
+
+				.article_content {
+					padding-left: rem(45px);
+					padding-right: 0;
+				}
+			}
+		}
 	}
 
 	&__half {
@@ -21,6 +40,10 @@
 }
 
 .article_content {
+	
+	@include breakpointUp(1200px) {
+		padding-right: rem(45px);
+	}
 
 	&__box {
 		width: 100%;
@@ -30,33 +53,64 @@
 		justify-content: center;
 	}
 
-	&:first-child &__box {
-		padding-left: rem(45px);
-	}
-
-	&:last-child &__box {
-		padding-right: rem(45px);
-	}
-
 	&__inner {
-		width: rem(445px);
-		max-width: 100%;
+
+		@include breakpointUp(1024px) {
+			width: rem(445px);
+			max-width: 100%;	
+		}
+		@include breakpoint(1023px) {
+			padding: rem(15px);	
+		}
+
+		@include breakpoint(639px) {
+			padding: rem(64px) rem(16px);
+			text-align: center;
+		}
 	}
 
 	&__title {
 		font-family: $fontTitles;
 		font-weight: 900;
-		font-size: rem(40px);
-		line-height: rem(49px);
-		margin-bottom: rem(32px);
+
+		@include breakpointUp(1024px) {
+			font-size: rem(40px);
+			line-height: rem(49px);
+			margin-bottom: rem(32px);
+		}
+		@include breakpointBetween(640px, 1023px) {
+			font-size: rem(24px);
+			line-height: rem(30px);
+			margin-bottom: rem(20px);
+		}
+
+		@include breakpoint(639px) {
+			font-size: rem(32px);
+			line-height: rem(39px);
+			margin-bottom: rem(24px);
+		}
 	}
 
 	&__text {
-		font-size: rem(18px);
-		line-height: rem(30px);
 		color: $neutral3;
-		margin-bottom: rem(40px);
 		letter-spacing: rem(-.13px);
+
+		@include breakpointUp(1024px) {
+			font-size: rem(18px);
+			line-height: rem(30px);
+			margin-bottom: rem(40px);
+		}
+		@include breakpointBetween(640px, 1023px) {
+			font-size: rem(14px);
+			line-height: rem(22px);
+			margin-bottom: rem(20px);
+		}
+
+		@include breakpoint(639px) {
+			font-size: rem(18px);
+			line-height: rem(30px);
+			margin-bottom: rem(32px);
+		}
 	}
 
 	&__link {
@@ -106,7 +160,24 @@
 		justify-content: flex-end;
 		align-items: center;
 		text-align: center;
-		padding-bottom: rem(59px);
+
+		@include breakpointUp(1200px) {
+			padding-bottom: rem(59px);			
+		}
+		@include breakpointBetween(640px, 1199px) {
+			padding-bottom: rem(40px);			
+		}
+
+		@include breakpointBetween(641px, 1023px) {
+			padding-left: rem(15px);
+			padding-right: rem(15px);
+		}
+
+		@include breakpoint(639px) {
+			padding-bottom: rem(59px);	
+			padding-left: rem(24px);
+			padding-right: rem(24px);
+		}
 	}
 
 	&__title,

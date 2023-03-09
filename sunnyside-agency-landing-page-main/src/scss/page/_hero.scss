@@ -1,5 +1,6 @@
 .sec_hero {
 	height: 100vh;
+	min-height: rem(540px);
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -19,17 +20,40 @@
 	}
 
 	&__title {
-		font-size: rem(56px);
-		line-height: rem(69px);
 		color: $neutral5;
 		font-family: $fontTitles;
 		font-weight: 900;
 		text-transform: uppercase;
-		letter-spacing: rem(8.75px);
+		text-align: center;
 		margin-bottom: rem(97px);
+		padding: 0 rem(22px);
+		
+		@include breakpointUp(640px) {
+			font-size: rem(56px);
+			line-height: rem(69px);
+			letter-spacing: rem(8.75px);
+		}
+
+		@include breakpoint(639px) {
+			letter-spacing: rem(6.25px);
+		}
+
+		@include breakpointBetween(375px, 639px) {
+			font-size: rem(40px);
+			line-height: rem(49px);
+			max-width: rem(357px);
+		}
+		
+		@include breakpoint(374px) {
+			font-size: rem(30px);
+			line-height: rem(40px);
+		}
 	}
 
 	&__arrow {
 		width: rem(30px);
+		animation-duration: 2s;
+  		animation-name: arrowMove;
+	  	animation-iteration-count: infinite;
 	}
 }

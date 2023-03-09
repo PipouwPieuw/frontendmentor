@@ -1,7 +1,15 @@
 .sec_images {
 	display: flex;
+	flex-wrap: wrap;
 
 	&__item {
-		flex: 0 0 25%;
+		
+		@include breakpoint(640px) {
+			flex: 0 0 25%;
+		}
+
+		@include breakpoint(639px) {
+			flex: 0 0 50%;
+		}
 	}
 }
