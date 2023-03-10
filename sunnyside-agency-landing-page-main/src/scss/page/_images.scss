@@ -4,7 +4,7 @@
 
 	&__item {
 		
-		@include breakpoint(640px) {
+		@include breakpointUp(640px) {
 			flex: 0 0 25%;
 		}
 
