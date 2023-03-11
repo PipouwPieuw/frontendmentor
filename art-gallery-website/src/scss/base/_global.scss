@@ -1,0 +1,18 @@
+a,
+input[type="submit"] {
+    @include transition($transition);
+}
+
+input,
+select {
+    appearance: none;
+}
+
+body {
+    font-family: $font;
+    color: $neutral1;
+}
+
+.container {
+    @include container;
+}

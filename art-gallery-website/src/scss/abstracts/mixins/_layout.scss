@@ -1,0 +1,25 @@
+@mixin container {
+    max-width: rem(1110px);
+    margin: 0 auto;
+
+    @include breakpoint(1199px) {
+        max-width: rem(94px);
+    }
+
+    @include breakpoint(1024px) {
+        max-width: rem(60px);
+    }
+
+    @include breakpoint(639px) {
+        max-width: 100%;
+    }
+}
+
+@mixin row {
+    @include clearfix;
+    margin: 0px rem(-10px);
+
+    @include breakpoint(small down) {
+        margin: 0;
+    }
+}

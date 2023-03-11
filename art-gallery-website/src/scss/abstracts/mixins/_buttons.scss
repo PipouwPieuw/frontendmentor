@@ -1,0 +1,58 @@
+@mixin ctaMain() {
+	color: $neutral2;
+
+	.inner {
+		display: flex;
+	}
+
+	.text,
+	.icon {
+		position: relative;
+		z-index: 1;
+
+		&:before {
+			content: "";
+			@include absolutePos;
+			z-index: -1;
+			@include transition($transition);
+		}
+	}
+
+	.text {
+		padding: rem(24px) rem(34px);
+		font-family: $fontTitles;
+		text-transform: uppercase;
+		font-size: rem(20px);
+		line-height: rem(24px);
+		letter-spacing: rem(3.29px);
+		font-weight: 800;
+		background: $primary;
+
+		&:before {			
+			background: $neutral1;
+		}
+	}
+
+	.icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: $neutral1;
+		width: rem(56px);
+
+		&:before {			
+			background: $primary;
+		}
+	}
+
+	&:hover {
+
+		.text:before {
+			right: 100%;
+		}
+
+		.icon:before {
+			left: 100%;
+		}
+	}
+}
