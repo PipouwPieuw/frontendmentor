@@ -3,18 +3,16 @@
 
 	.inner {
 		display: flex;
+		position: relative;
 	}
 
 	.text,
 	.icon {
-		position: relative;
-		z-index: 1;
 
 		&:before {
 			content: "";
 			@include absolutePos;
 			z-index: -1;
-			@include transition($transition);
 		}
 	}
 
@@ -27,18 +25,24 @@
 		letter-spacing: rem(3.29px);
 		font-weight: 800;
 		background: $primary;
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
 
 		&:before {			
 			background: $neutral1;
+			right: rem(-56px);
 		}
 	}
 
 	.icon {
+		z-index: 1;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background: $neutral1;
 		width: rem(56px);
+		font-size: rem(24px);
 
 		&:before {			
 			background: $primary;
@@ -47,12 +51,29 @@
 
 	&:hover {
 
+		.text:before,
+		.icon:before {
+		}
+
 		.text:before {
-			right: 100%;
+			@include transition(.4s);
+			left: calc(100% + rem(56px));
 		}
 
 		.icon:before {
+			@include transition(.4s);
 			left: 100%;
+		}
+	}
+
+	&:not(:hover) {
+
+		.text:before {
+			@include transition(.4s);
+		}
+
+		.icon:before {
+			@include transition(.4s);
 		}
 	}
 }

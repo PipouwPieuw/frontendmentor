@@ -3,15 +3,16 @@
     margin: 0 auto;
 
     @include breakpoint(1199px) {
-        max-width: rem(94px);
+        max-width: rem(940px);
     }
 
-    @include breakpoint(1024px) {
-        max-width: rem(60px);
+    @include breakpoint(1023px) {
+        max-width: rem(600px);
     }
 
-    @include breakpoint(639px) {
+    @include breakpoint(767px) {
         max-width: 100%;
+        padding: 0 rem(16px);
     }
 }
 

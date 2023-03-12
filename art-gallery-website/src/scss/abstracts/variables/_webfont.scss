@@ -1,0 +1,61 @@
+$webfont-arrow-left: "\ea01";
+
+$webfont-arrow-right: "\ea02";
+
+$webfont-facebook: "\ea03";
+
+$webfont-instagram: "\ea04";
+
+$webfont-location: "\ea05";
+
+$webfont-twitter: "\ea06";
+
+
+@font-face {
+    font-family: "webfont";
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url("../../assets/webfont/webfont.eot");
+    src: url("../../assets/webfont/webfont.eot?#iefix") format("embedded-opentype"), url("../../assets/webfont/webfont.woff2") format("woff2"), url("../../assets/webfont/webfont.woff") format("woff"), url("../../assets/webfont/webfont.ttf") format("truetype"), url("../../assets/webfont/webfont.svg#webfont") format("svg");
+}
+
+%webfont {
+    display: inline-block;
+    font-family: "webfont";
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.webfont {
+    @extend %webfont;
+}
+
+.webfont-arrow-left::before {
+    content: "\ea01";
+}
+
+.webfont-arrow-right::before {
+    content: "\ea02";
+}
+
+.webfont-facebook::before {
+    content: "\ea03";
+}
+
+.webfont-instagram::before {
+    content: "\ea04";
+}
+
+.webfont-location::before {
+    content: "\ea05";
+}
+
+.webfont-twitter::before {
+    content: "\ea06";
+}

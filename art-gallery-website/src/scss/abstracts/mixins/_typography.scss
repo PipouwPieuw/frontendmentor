@@ -1,9 +1,22 @@
 @mixin headingXL() {
 	font-family: $fontTitles;
-	font-size: rem(96px);
-	line-height: rem(88px);
 	text-transform: uppercase;
 	font-weight: 900;
+
+	@include breakpointUp(1200px) {
+		font-size: rem(96px);
+		line-height: rem(88px);	
+	}
+
+	@include breakpointBetween(768px, 1199px) {
+		font-size: rem(70px);
+		line-height: rem(65px);		
+	}
+
+	@include breakpoint(767px) {
+		font-size: rem(60px);
+		line-height: rem(55px);		
+	}
 }
 
 @mixin headingL() {
@@ -17,7 +30,7 @@
 @mixin headingM() {
 	font-family: $fontTitles;
 	font-size: rem(60px);
-	line-height: rem(50px);
+	line-height: rem(60px);
 	text-transform: uppercase;
 	font-weight: 900;
 }
@@ -31,8 +44,16 @@
 }
 
 @mixin bodyM() {
-	font-size: rem(22px);
-	line-height: rem(32px);
+
+	@include breakpointUp(1200px) {
+		font-size: rem(22px);
+		line-height: rem(32px);
+	}
+
+	@include breakpoint(1199px) {
+		font-size: rem(18px);
+		line-height: rem(28px);	
+	}
 }
 
 @mixin bodyS() {

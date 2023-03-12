@@ -11,25 +11,65 @@
         <main>
             <section class="sec_hero">
                 <picture class="sec_hero__picture">
-                    <source srcset="assets/img/desktop/image-hero.jpg" media="(min-width: 640px)" />
-                    <img src="assets/img/mobile/image-hero.jpg" class="sec_hero__img" alt="Two people staring at a painting of an elderly woman."/>
+                    <source srcset="assets/img/desktop/image-hero.jpg, assets/img/desktop/image-hero@2x.jpg 2x" media="(min-width: 1024px)" />
+                    <source srcset="assets/img/tablet/image-hero.jpg, assets/img/tablet/image-hero@2x.jpg 2x" media="(min-width: 768px)" />
+                    <img src="assets/img/mobile/image-hero.jpg" srcset="assets/img/mobile/image-hero@2x.jpg 2x" class="sec_hero__img" alt="Two people staring at a painting of an elderly woman."/>
                 </picture>
                 <div class="sec_hero__container container">
-                    <h1 class="sec_hero__title">
-                        <span class="sec_hero__title_line" data-text="Modern">Modern</span>
-                        <span class="sec_hero__title_line" data-text="art gallery">art gallery</span>
-                    </h1>
-                    <div class="sec_hero__content">
-                        <p class="sec_hero__text">The arts in the collection of the Modern Art Gallery all started from a spark of inspiration. Will these pieces inspire you? Visit us and find out.</p>
-                        <a class="sec_hero__btn" href="/">
-                            <span class="inner">
-                                <span class="text">Our location</span>
-                                <i class="icon webfont webfont-chevron"></i>
-                            </span>
-                        </a>
+                    <div class="sec_hero__box">
+                        <h1 class="sec_hero__title">
+                            <span class="sec_hero__title_line" data-text="Modern">Modern</span>
+                            <span class="sec_hero__title_line" data-text="art gallery">art gallery</span>
+                        </h1>
+                        <div class="sec_hero__content">
+                            <p class="sec_hero__text">The arts in the collection of the Modern Art Gallery all started from a spark of inspiration. Will these pieces inspire you? Visit us and find out.</p>
+                            <a class="sec_hero__btn" href="/">
+                                <span class="inner">
+                                    <span class="text">Our location</span>
+                                    <span class="icon">
+                                        <i class="webfont webfont-arrow-right"></i>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
+            <section class="sec_gallery">
+                <div class="sec_gallery__container container">
+                    <div class="sec_gallery__row sec_gallery__row--row sec_gallery__row--reverse">
+                        <picture class="sec_gallery__picture sec_gallery__col sec_gallery__col--large">
+                            <source srcset="assets/img/desktop/image-grid-1.jpg, assets/img/desktop/image-grid-1@2x.jpg 2x" media="(min-width: 1024px)" />
+                            <source srcset="assets/img/tablet/image-grid-1.jpg, assets/img/tablet/image-grid-1@2x.jpg 2x" media="(min-width: 768px)" />
+                            <img src="assets/img/mobile/image-grid-1.jpg" srcset="assets/img/mobile/image-grid-1@2x.jpg 2x" class="sec_gallery__img" alt="Gallery displaying several abstract works of art."/>
+                        </picture>
+                        <div class="sec_gallery__col sec_gallery__col--small">
+                            <div class="sec_gallery__content sec_gallery__content--white ">
+                                <h2 class="sec_gallery__title">Your Day at the Gallery</h2>
+                                <p class="sec_gallery__text sec_gallery__text--grey">Wander through our distinct collections and find new insights about our artists. Dive into the details of their creative process.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec_gallery__row sec_gallery__row--row">
+                        <picture class="sec_gallery__picture sec_gallery__col sec_gallery__col--large">
+                            <source srcset="assets/img/desktop/image-grid-2.jpg, assets/img/desktop/image-grid-2@2x.jpg 2x" media="(min-width: 1024px)" />
+                            <source srcset="assets/img/tablet/image-grid-2.jpg, assets/img/tablet/image-grid-2@2x.jpg 2x" media="(min-width: 768px)" />
+                            <img src="assets/img/mobile/image-grid-2.jpg" srcset="assets/img/mobile/image-grid-2@2x.jpg 2x" class="sec_gallery__img" alt="Wooden bench in front of abstract black and white painting."/>
+                        </picture>
+                        <div class="sec_gallery__col sec_gallery__col--small sec_gallery__row sec_gallery__row--col">                            
+                            <picture class="sec_gallery__picture sec_gallery__large">
+                                <source srcset="assets/img/desktop/image-grid-3.jpg, assets/img/desktop/image-grid-3@2x.jpg 2x" media="(min-width: 1024px)" />
+                                <source srcset="assets/img/tablet/image-grid-3.jpg, assets/img/tablet/image-grid-3@2x.jpg 2x" media="(min-width: 768px)" />
+                                <img src="assets/img/mobile/image-grid-3.jpg" srcset="assets/img/mobile/image-grid-3@2x.jpg 2x" class="sec_gallery__img" alt="Side view of visitors watching paintings on wall."/>
+                            </picture>
+                            <div class="sec_gallery__content sec_gallery__content--black">
+                                <h2 class="sec_gallery__title">Come & be inspired</h2>
+                                <p class="sec_gallery__text">We’re excited to welcome you to our gallery and see how our collections influence you.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> 
         </main>
     </body>
 </html>
