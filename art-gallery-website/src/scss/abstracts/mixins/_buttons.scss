@@ -51,10 +51,6 @@
 
 	&:hover {
 
-		.text:before,
-		.icon:before {
-		}
-
 		.text:before {
 			@include transition(.4s);
 			left: calc(100% + rem(56px));

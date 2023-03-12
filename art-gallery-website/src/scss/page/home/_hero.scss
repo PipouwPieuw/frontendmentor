@@ -1,6 +1,6 @@
 .sec_hero {
 
-	@include breakpointUp(767px) {
+	@include breakpointUp(768px) {
 		height: 100vh;
 		min-height: rem(540px);
 		overflow: hidden;
@@ -28,7 +28,7 @@
 
 	&__picture {
 
-		@include breakpointUp(767px) {
+		@include breakpointUp(768px) {
 			position: absolute;
 			top: 0;
 			bottom: 0;
@@ -98,7 +98,7 @@
 	&__title {
 		@include headingXL;
 
-		@include breakpointBetween(769px, 1199px) {
+		@include breakpointBetween(768px, 1199px) {
 			margin-bottom: rem(48px);
 		}
 

@@ -1,63 +1,205 @@
 .sec_gallery {
-	padding: rem(180px) 0;
+
+	@include breakpointUp(1024px) {
+		padding: rem(180px) 0;
+	}
+
+	@include breakpoint(1023px) {
+		padding: rem(120px) 0;
+	}
 
 	&__row {
-		display: flex;
+
+		@include breakpointUp(768px) {
+			display: flex;
+		}
+
+		@include breakpoint(767px) {
+			
+			&:not(:last-child) {
+				margin-bottom: rem(16px);
+			}
+		}
 
 		&--row {
-			margin: 0 rem(-15px);
+
+			@include breakpointUp(1024px) {
+				margin: 0 rem(-15px);
+			}
+
+			@include breakpointBetween(768px, 1023px) {
+				margin: 0 rem(-6px);
+			}
 		}
 
 		&--reverse {
-			flex-direction: row-reverse;
+
+			@include breakpointUp(768px) {
+				flex-direction: row-reverse;
+			}
 		}
 
 		&--col {
-			flex-direction: column;
+
+			@include breakpointUp(768px) {
+				flex-direction: column;
+			}
 
 			> *:not(:last-child) {
-				margin-bottom: rem(30px);
+
+				@include breakpointUp(1024px) {
+					margin-bottom: rem(30px);
+				}
+
+				@include breakpointBetween(768px, 1023px) {
+					margin-bottom: rem(12px);
+				}
+
+				@include breakpoint(767px) {
+					margin-bottom: rem(16px);
+				}
 			}
 		}
 
 		&:not(:last-child) {
-			margin-bottom: rem(30px);
+
+			@include breakpointUp(1024px) {
+				margin-bottom: rem(30px);
+			}
+
+			@include breakpointBetween(768px, 1023px) {
+				margin-bottom: rem(12px);
+			}
 		}
 	}
 
 	&__col {
-		padding: 0 rem(15px);
+
+		@include breakpointUp(1024px) {
+			padding: 0 rem(15px);
+		}
+
+		@include breakpointBetween(768px, 1023px) {
+			padding: 0 rem(6px);
+		}
+
+		@include breakpoint(767px) {
+			
+			&:not(:last-child) {
+				margin-bottom: rem(16px);
+			}
+		}
 
 		&--small {
-			flex: 0 0 rem(475px);
+
+			@include breakpointUp(1200px) {
+				flex: 0 0 rem(475px);
+			}
+
+			@include breakpointBetween(1024px, 1199px) {
+				flex: 0 0 rem(475px);
+			}
+
+			@include breakpointBetween(768px, 1023px) {
+				flex: 0 0 rem(292px);
+			}
 		}
 
 		&--large {
-			flex: 0 0 calc(100% - rem(475px));
+
+			@include breakpointUp(1200px) {
+				flex: 0 0 calc(100% - rem(475px));
+			}
+
+			@include breakpointBetween(1024px, 1199px) {
+				flex: 0 0 calc(100% - rem(475px));
+			}
+
+			@include breakpointBetween(768px, 1023px) {
+				flex: 0 0 calc(100% - rem(292px));
+			}
 		}
 	}
 
 	&__content {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		
+		@include breakpointUp(768px) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
 
 		&--white {
-			height: 100%;
-			padding-right: rem(95px);
+
+			@include breakpointUp(1024px) {
+				padding-right: rem(95px);
+			}
+
+			@include breakpointBetween(768px, 1023px) {
+				padding-right: rem(56px);
+			}
+
+			@include breakpointUp(768px) {
+				height: 100%;
+			}
+
+			@include breakpoint(767px) {
+				padding: rem(16px) 0;
+			}
 		}
 
 		&--black {
 			background: $neutral1;
 			color: $neutral2;
-			padding: rem(48px);
-			flex: 1;
+
+			@include breakpointUp(1024px) {
+				padding: rem(48px);
+			}
+
+			@include breakpointBetween(768px, 1023px) {
+				padding: rem(28px);
+			}
+
+			@include breakpointUp(768px) {
+				flex: 1;
+			}
+
+			@include breakpoint(767px) {
+				padding: rem(48px) rem(24px);
+			}
+		}
+	}
+
+	&__img {
+
+		@include breakpointBetween(1024px, 1199px) {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		@include breakpoint(767px) {
+			width: 100%;
 		}
 	}
 
 	&__title {
 		@include headingM;
-		margin-bottom: rem(32px);
+
+		@include breakpointUp(1024px) {
+			margin-bottom: rem(32px);
+		}
+
+		@include breakpoint(1023px) {
+			margin-bottom: rem(24px);
+		}
+	}
+
+	&__title_line {
+
+		@include breakpoint(767px) {
+			display: block;
+		}
 	}
 
 	&__text {
