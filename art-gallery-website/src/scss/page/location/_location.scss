@@ -1,0 +1,83 @@
+.sec_location {
+	background: $neutral1;
+	color: $neutral2;
+
+	@include breakpointUp(1200px) {
+		padding-top: rem(104px);
+		padding-bottom: rem(128px);
+	}
+
+	@include breakpointBetween(768px, 1199px) {
+		padding-top: rem(88px);
+		padding-bottom: rem(80px);
+	}
+
+	@include breakpoint(767px) {
+		padding-top: rem(48px);
+		padding-bottom: rem(56px);		
+	}
+
+	&__container {
+
+		@include breakpointUp(768px) {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	&__title {
+		@include headingL;
+
+		@include breakpoint(767px) {
+			margin-bottom: rem(48px);
+		}
+	}
+
+	&__title_line {
+
+		@include breakpointUp(768px) {
+			display: block;
+		}
+	}
+
+	&__content {
+
+		@include breakpointUp(1024px) {
+			max-width: rem(540px);
+		}
+
+		@include breakpointBetween(768px, 1023px) {
+			max-width: rem(398px);
+		}
+	}
+
+	&__address {
+
+		@include breakpointUp(1200px) {
+			margin-bottom: rem(32px);
+		}
+
+		@include breakpoint(1199px) {
+			margin-bottom: rem(20px);
+		}
+	}
+
+	&__street {
+		display: block;
+		@include headingS;
+		color: $primary;
+
+		@include breakpointUp(1200px) {
+			margin-bottom: rem(24px);
+		}
+
+		@include breakpoint(1199px) {
+			margin-bottom: rem(20px);
+		}
+	}
+
+	&__text {
+		display: block;
+		@include bodyM;
+	}
+}
