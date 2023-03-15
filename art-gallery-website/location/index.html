@@ -5,16 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png">
         <link rel="stylesheet" href="../dist/css/main.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
         <title>Modern Art Gallery | Our location</title>
     </head>
     <body>
         <main>
             <section class="sec_map">
-            	<div class="sec_map__map">
+            	<div id="map" class="sec_map__map">
 
             	</div>
                 <div class="sec_map__container container">                   
-                    <a class="sec_hero__btn" href="/">
+                    <a class="sec_map__btn" href="/">
                         <span class="inner">
                             <span class="icon">
                                 <i class="webfont webfont-arrow-left"></i>
@@ -71,5 +73,6 @@
                 </nav>
             </div>
         </footer>
+        <script src="../dist/js/scripts.min.js"></script>
     </body>
 </html>

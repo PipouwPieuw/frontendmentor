@@ -13,6 +13,7 @@
 			content: "";
 			@include absolutePos;
 			z-index: -1;
+			@include transition(.4s);
 		}
 	}
 
@@ -31,7 +32,14 @@
 
 		&:before {			
 			background: $neutral1;
+		}
+
+		&:last-child:before {
 			right: rem(-56px);
+		}
+
+		&:first-child:before {
+			left: rem(-56px);
 		}
 	}
 
@@ -51,25 +59,26 @@
 
 	&:hover {
 
-		.text:before {
-			@include transition(.4s);
-			left: calc(100% + rem(56px));
+		.text {
+
+			&:last-child:before {
+				left: calc(100% + rem(56px));
+			}
+
+			&:first-child:before {
+				right: calc(100% + rem(56px));
+			}
 		}
 
-		.icon:before {
-			@include transition(.4s);
-			left: 100%;
-		}
-	}
+		.icon {
 
-	&:not(:hover) {
+			&:last-child:before {
+				right: 100%;
+			}
 
-		.text:before {
-			@include transition(.4s);
-		}
-
-		.icon:before {
-			@include transition(.4s);
+			&:first-child:before {
+				left: 100%;
+			}
 		}
 	}
 }

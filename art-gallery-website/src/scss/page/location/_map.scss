@@ -1,3 +1,34 @@
 .sec_map {
+	position: relative;
 	
+	&__map {
+		z-index: 1;
+
+		@include breakpointUp(768px) {
+			height: 37.5rem;
+		}
+		
+		@include breakpoint(767px) {
+			height: 34.375rem;
+		}
+
+		.leaflet-marker-icon {
+			cursor: default;
+		}
+	}
+
+	&__container {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		right: 0;
+		pointer-events: none;
+	}
+
+	&__btn {
+		display: inline-block;
+		@include ctaMain;
+		pointer-events: all;
+	}
 }
