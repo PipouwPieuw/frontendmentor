@@ -5,7 +5,7 @@ var map = L.map('map', {
 	scrollWheelZoom: false,
 	doubleClickZoom: false,
 	touchZoom: false,
-}).setView([51.505, -0.09], 13);
+}).setView([41.4813163, -71.312549], 16);
 // Add layer
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
 // Add marker
@@ -18,4 +18,4 @@ var icon = L.icon({
     shadowAnchor: [0, 0],  // the same for the shadow
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
-var marker = L.marker([51.5, -0.09], {icon: icon}).addTo(map);
+var marker = L.marker([41.480497, -71.310980], {icon: icon}).addTo(map);

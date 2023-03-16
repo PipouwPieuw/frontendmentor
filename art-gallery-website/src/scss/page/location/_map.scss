@@ -24,6 +24,10 @@
 		left: 0;
 		right: 0;
 		pointer-events: none;
+
+		@include breakpoint(767px) {
+			padding: 0;
+		}
 	}
 
 	&__btn {
