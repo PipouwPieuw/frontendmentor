@@ -1,0 +1,11 @@
+.grid {
+	width: 632px;
+	height: 594px;
+	position: relative;
+
+	&__layer {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+}

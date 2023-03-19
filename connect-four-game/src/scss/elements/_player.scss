@@ -1,0 +1,21 @@
+.player_card {
+	@include box(0 rem(17px) rem(17px) rem(17px));
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	width: 147px;
+
+	&__img {
+		margin-top: rem(-27px);
+		margin-bottom: rem(14px);
+	}
+
+	&__label {
+		@include headingS;
+	}
+
+	&__score {
+		@include headingL;
+	}
+}

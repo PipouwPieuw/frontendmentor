@@ -1,0 +1,38 @@
+.modal {
+	@include fixedPos;
+	@include transition($transition);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: rem(15px);
+
+	&__overlay {
+		@include fixedPos;
+		@include transition($transition);
+
+		&--opaque {
+			background: $darkPurple;
+		}
+
+		&:not(.visible) {
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+
+	&:not(.visible) {
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(rem(-10px));
+	}
+
+	&__box {
+		width:rem(480px);
+		max-width: 100%;
+		@include box(rem(67px) rem(37px) rem(57px) rem(37px), $purple);
+	}
+
+	&__logo {
+		margin: 0 auto rem(70px) auto;
+	}
+}

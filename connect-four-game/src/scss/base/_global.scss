@@ -1,0 +1,25 @@
+a,
+input[type="submit"] {
+    @include transition($transition);
+}
+
+input,
+select {
+    appearance: none;
+}
+
+body {
+    font-family: $font;
+}
+
+.container {
+    @include container;
+}
+
+.sr_only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}

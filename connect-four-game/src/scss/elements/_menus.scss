@@ -1,0 +1,13 @@
+.menu {
+
+	&__item {
+
+		&:not(:last-child) {
+			margin-bottom: rem(24px);
+		}
+	}
+
+	&__button {
+		@include buttonMain;
+	}
+}

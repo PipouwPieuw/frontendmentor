@@ -1,0 +1,33 @@
+@mixin headingL($tt: uppercase) {
+	font-size: rem(56px);
+	line-height: rem(71px);
+	font-weight: 700;
+	text-transform: $tt;
+}
+
+@mixin headingM($tt: uppercase) {
+	font-size: rem(24px);
+	line-height: rem(31px);
+	font-weight: 700;
+	text-transform: $tt;
+}
+
+@mixin headingS($tt: uppercase) {
+	font-size: rem(20px);
+	line-height: rem(26px);
+	font-weight: 700;
+	text-transform: $tt;
+}
+
+@mixin headingXS($tt: uppercase) {
+	font-size: rem(16px);
+	line-height: rem(20px);
+	font-weight: 700;
+	text-transform: $tt;
+}
+
+@mixin body() {
+	font-size: rem(16px);
+	line-height: rem(21px);
+	font-weight: 500;
+}
