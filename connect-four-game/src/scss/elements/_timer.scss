@@ -1,0 +1,35 @@
+.timer_card {
+	width: 198px;
+	height: 160px;
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	padding-bottom: rem(24px);
+	margin-top: rem(-52px);
+	position: relative;
+	z-index: 1;
+
+	&--p1 {
+		background-image: url(../../assets/img/turn-background-red.svg);
+		color: $white;
+	}
+
+	&--p2 {
+		background-image: url(../../assets/img/turn-background-yellow.svg);
+		color: $black;
+	}
+
+	&__label {
+		@include headingXS;
+		margin-bottom: rem(2px);
+	}
+
+	&__countdown {
+		@include headingL(none);
+	}
+}

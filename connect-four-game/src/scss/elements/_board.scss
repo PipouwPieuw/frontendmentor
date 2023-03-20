@@ -5,12 +5,40 @@
 	align-items: center;
 	justify-content: center;
 	padding: rem(15px);
+	position: relative;
+
+
+	&:after {
+		content: "";
+		position: absolute;
+		z-index: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: calc((100vh - 800px) / 2 + 156px);
+		border-radius: rem(60px) rem(60px) 0 0;
+		min-height: 170px;
+	}
+
+	&--neutral:after {
+		background: $darkPurple;
+	}
+
+	&--p1:after {
+		background: $red;
+	}
+
+	&--p2:after {
+		background: $yellow;
+	}
 
 	&__container {
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		position: relative;
+		z-index: 1;
 	}
 
 	&__top {
@@ -30,5 +58,10 @@
 
 	&__button {
 		@include cta;
+	}
+
+	&__bottom {
+		display: flex;
+		justify-content: center;
 	}
 }

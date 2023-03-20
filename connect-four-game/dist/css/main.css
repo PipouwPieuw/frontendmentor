@@ -200,12 +200,35 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0.9375rem;
+  position: relative;
+}
+.board:after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc((100vh - 800px) / 2 + 156px);
+  border-radius: 3.75rem 3.75rem 0 0;
+  min-height: 170px;
+}
+.board--neutral:after {
+  background: #5C2DD5;
+}
+.board--p1:after {
+  background: #FD6687;
+}
+.board--p2:after {
+  background: #FFCE67;
 }
 .board__container {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 .board__top {
   display: flex;
@@ -237,6 +260,10 @@ body {
 }
 .board__button:hover {
   background: #FD6687;
+}
+.board__bottom {
+  display: flex;
+  justify-content: center;
 }
 
 .player_card {
@@ -277,6 +304,45 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+  pointer-events: none;
+}
+
+.timer_card {
+  width: 198px;
+  height: 160px;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 1.5rem;
+  margin-top: -3.25rem;
+  position: relative;
+  z-index: 1;
+}
+.timer_card--p1 {
+  background-image: url(../../assets/img/turn-background-red.svg);
+  color: #FFFFFF;
+}
+.timer_card--p2 {
+  background-image: url(../../assets/img/turn-background-yellow.svg);
+  color: #000000;
+}
+.timer_card__label {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.125rem;
+}
+.timer_card__countdown {
+  font-size: 3.5rem;
+  line-height: 4.4375rem;
+  font-weight: 700;
+  text-transform: none;
 }
 
 /*# sourceMappingURL=main.css.map */
