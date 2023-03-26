@@ -14,16 +14,6 @@
 	position: relative;
 	z-index: 1;
 
-	&--p1 {
-		background-image: url(../../assets/img/turn-background-red.svg);
-		color: $white;
-	}
-
-	&--p2 {
-		background-image: url(../../assets/img/turn-background-yellow.svg);
-		color: $black;
-	}
-
 	&__label {
 		@include headingXS;
 		margin-bottom: rem(2px);
@@ -32,4 +22,14 @@
 	&__countdown {
 		@include headingL(none);
 	}
+}
+
+body.p1 .timer_card {
+	background-image: url(../../assets/img/turn-background-red.svg);
+	color: $white;
+}
+
+body.p2 .timer_card {
+	background-image: url(../../assets/img/turn-background-yellow.svg);
+	color: $black;
 }

@@ -319,10 +319,42 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+.grid__col:before {
+  content: "";
+  position: absolute;
+  top: -46px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 38px;
+  height: 36px;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  -moz-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+.grid__col:not(:hover):before {
+  opacity: 0;
+  top: -51px;
 }
 .grid__cell {
   flex: 0 0 16.6666666667%;
-  background: blue;
+}
+
+body.p1 .grid__col:before {
+  background-image: url(../../assets/img/marker-red.svg);
+}
+
+body.p2 .grid__col:before {
+  background-image: url(../../assets/img/marker-yellow.svg);
 }
 
 .timer_card {
@@ -341,14 +373,6 @@ body {
   position: relative;
   z-index: 1;
 }
-.timer_card--p1 {
-  background-image: url(../../assets/img/turn-background-red.svg);
-  color: #FFFFFF;
-}
-.timer_card--p2 {
-  background-image: url(../../assets/img/turn-background-yellow.svg);
-  color: #000000;
-}
 .timer_card__label {
   font-size: 1rem;
   line-height: 1.25rem;
@@ -361,6 +385,16 @@ body {
   line-height: 4.4375rem;
   font-weight: 700;
   text-transform: none;
+}
+
+body.p1 .timer_card {
+  background-image: url(../../assets/img/turn-background-red.svg);
+  color: #FFFFFF;
+}
+
+body.p2 .timer_card {
+  background-image: url(../../assets/img/turn-background-yellow.svg);
+  color: #000000;
 }
 
 /*# sourceMappingURL=main.css.map */
