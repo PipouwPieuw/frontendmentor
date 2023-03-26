@@ -348,6 +348,17 @@ body {
 .grid__cell {
   flex: 0 0 16.6666666667%;
 }
+.grid__cell--filled {
+  background-size: 70px 75px;
+  background-repeat: no-repeat;
+  background-position: top 8px center;
+}
+.grid__cell--p1 {
+  background-image: url(../../assets/img/counter-red-large.svg);
+}
+.grid__cell--p2 {
+  background-image: url(../../assets/img/counter-yellow-large.svg);
+}
 
 body.p1 .grid__col:before {
   background-image: url(../../assets/img/marker-red.svg);

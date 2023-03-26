@@ -5,9 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon.png">
         <link rel="stylesheet" href="dist/css/main.css">
+        <script src="dist/js/scripts.min.js"></script>
         <title>Connect Four</title>
     </head>
-    <body class="p1">
+    <body>
         <main>
             <h1 class="sr_only">Connect four game</h1>
             <div class="board board--neutral">
@@ -29,22 +30,7 @@
                         </div>
                         <div class="grid">
                             <img class="grid__layer grid__layer--back" src="assets/img/board-layer-black-large.svg" role="presentation" alt=""/>
-                            <div class="grid__grid">
-                            	<span class="grid__col">
-                            		<span class="grid__cell"></span>
-                            		<span class="grid__cell"></span>
-                            		<span class="grid__cell"></span>
-                            		<span class="grid__cell"></span>
-                            		<span class="grid__cell"></span>
-                            		<span class="grid__cell"></span>
-                            	</span>
-                            	<span class="grid__col"></span>
-                            	<span class="grid__col"></span>
-                            	<span class="grid__col"></span>
-                            	<span class="grid__col"></span>
-                            	<span class="grid__col"></span>
-                            	<span class="grid__col"></span>
-                            </div>
+                            <div id="grid" class="grid__grid"></div>
                             <img class="grid__layer grid__layer--front" src="assets/img/board-layer-white-large.svg" role="presentation" alt=""/>
                         </div>
                         <div class="board__bottom">

@@ -53,6 +53,20 @@
 
 	&__cell {
 		flex: 0 0 calc(100% / 6);
+
+		&--filled {
+			background-size: 70px 75px;
+			background-repeat: no-repeat;
+			background-position: top 8px center;
+		}
+
+		&--p1 {
+			background-image: url(../../assets/img/counter-red-large.svg);
+		}
+
+		&--p2 {
+			background-image: url(../../assets/img/counter-yellow-large.svg);
+		}
 	}
 }
 
