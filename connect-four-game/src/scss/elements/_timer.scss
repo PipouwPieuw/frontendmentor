@@ -1,9 +1,6 @@
 .timer_card {
 	width: 198px;
 	height: 160px;
-	background-size: 100% 100%;
-	background-position: center;
-	background-repeat: no-repeat;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -13,6 +10,28 @@
 	margin-top: rem(-52px);
 	position: relative;
 	z-index: 1;
+	background: url(../../assets/img/turn-background-red.svg) center no-repeat;
+	background-size: 100% 100%;
+
+	&:before,
+	&:after {
+		content: "";
+		@include absolutePos;
+		z-index: -1;
+		background-size: 100% 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+		opacity: 0;
+		@include transition($transition);
+	}
+
+	&:before {
+		background-image: url(../../assets/img/turn-background-red.svg);
+	}
+
+	&:after {
+		background-image: url(../../assets/img/turn-background-yellow.svg);
+	}
 
 	&__label {
 		@include headingXS;
@@ -24,12 +43,18 @@
 	}
 }
 
-body.p1 .timer_card {
-	background-image: url(../../assets/img/turn-background-red.svg);
+body[data-player="p1"] .timer_card {
 	color: $white;
+
+	&:before {
+		opacity: 1;
+	}
 }
 
-body.p2 .timer_card {
-	background-image: url(../../assets/img/turn-background-yellow.svg);
+body[data-player="p2"] .timer_card {
 	color: $black;
+
+	&:after {
+		opacity: 1;
+	}
 }

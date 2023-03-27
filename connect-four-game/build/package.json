@@ -4,13 +4,14 @@
   "description": "SCSS starter",
   "main": "index.js",
   "scripts": {
-    "dev": "sass --watch --update --style=expanded ../src/scss:../dist/css",
-    "prod": "sass --no-source-map --style=compressed ../src/scss:../dist/css",
+    "build:scss": "sass --no-source-map --style=compressed ../src/scss:../dist/css",
+    "watch:scss": "sass --watch --update --style=expanded ../src/scss:../dist/css",
     "concat:js": "concat -o ../dist/js/scripts.js ../src/js/index.js",
     "uglify": "uglifyjs -o ../dist/js/scripts.min.js ../dist/js/scripts.js",
     "build:js": "npm run concat:js && npm run uglify",
     "watch:js": "onchange \"../src/js/index.js\" -- npm run build:js",
-    "watch": "npm-run-all --parallel watch:*"
+    "watch": "npm-run-all --parallel watch:*",
+    "build": "npm-run-all --parallel build:*"
   },
   "author": "Pipow",
   "license": "ISC",
