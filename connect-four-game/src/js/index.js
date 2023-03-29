@@ -1,7 +1,8 @@
 // Initialize grid
 var gridW = 7;
 var gridH = 6;
-var grid = Array(gridW).fill([...Array(gridH)]);
+//var grid = new Array(gridW).fill([...Array(gridH)]);
+var grid = [...new Array(gridW)].map(elem => new Array(gridH))
 var activePlayer = '';
 var defaultTimer = 30;
 var currentTimer = defaultTimer;
@@ -39,6 +40,8 @@ window.onload=function(){
   			stopTimer = true;
   			// Prevent click actions on grid
   			document.body.style.pointerEvents = 'none';
+  			// Get column index
+  			var colIndex = parseInt(gridCol.getAttribute('data-index'));
   			// Get bottom empty cell
   			var query = gridCol.querySelectorAll('.grid__cell:not(.grid__cell--filled)');
     		var targetCell = query[query.length-1];
@@ -61,11 +64,13 @@ window.onload=function(){
 		    		// Remove token
 		    		gridCol.removeChild(token);
 		    		// If last cell, set column as filled
-		    		if(targetCell.getAttribute('data-index') == 0)
-		    			gridCol.classList.add('grid__col--filled');
+		    		if(cellIndex == 0)
+		    			gridCol.classList.add('grid__col--filled');		    		
     			})
     			.then(() => sleep(100))
     			.then(() => {
+    				// Update grid array
+    				grid[colIndex][cellIndex] = activePlayer;
 		    		// Change player turn
 		    		changePlayer();
 		  			// Reset click actions on grid
@@ -99,9 +104,12 @@ function launchTimer() {
 	timerElem.innerHTML = currentTimer;
 	stopTimer = false;
 	countdown = setInterval(() => {
-		if(currentTimer == 0 || stopTimer)
+		if(currentTimer == 0 || stopTimer) {
 			clearInterval(countdown);
-		currentTimer--;
-		timerElem.innerHTML = currentTimer;
+		}
+		else {
+			currentTimer--;
+			timerElem.innerHTML = currentTimer;
+		}
 	}, 1000);	
 }
