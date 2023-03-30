@@ -71,6 +71,7 @@ window.onload=function(){
     			.then(() => {
     				// Update grid array
     				grid[colIndex][cellIndex] = activePlayer;
+    				console.log(checkVictory(activePlayer, colIndex, cellIndex));
 		    		// Change player turn
 		    		changePlayer();
 		  			// Reset click actions on grid
@@ -112,4 +113,49 @@ function launchTimer() {
 			timerElem.innerHTML = currentTimer;
 		}
 	}, 1000);	
+}
+
+function checkVictory(player, col, cell) {
+	var currentCells = [[col, cell]];
+	var processLoop = true;
+	var counter = col;
+
+	// Check line before
+	while(processLoop) {
+		counter -= 1;
+		if(counter < 0 || grid[counter][cell] != player)
+			processLoop = false;
+		else
+			currentCells.push([counter, cell])
+	}
+	// Check line after
+	counter = col;
+	processLoop = true;
+	while(processLoop) {
+		counter += 1;
+		if(counter >= gridW || grid[counter][cell] != player)
+			processLoop = false;
+		else
+			currentCells.push([counter, cell])
+	}
+
+	if(currentCells.length >= 4)
+		return currentCells;
+
+	// Check column	
+	currentCells = [[col, cell]];
+	counter = cell;
+	processLoop = true;
+	while(processLoop) {
+		counter += 1;
+		if(counter >= gridH || grid[col][counter] != player)
+			processLoop = false;
+		else
+			currentCells.push([counter, cell])
+	}
+
+	if(currentCells.length >= 4)
+		return currentCells;
+
+	// Check diagonals
 }
