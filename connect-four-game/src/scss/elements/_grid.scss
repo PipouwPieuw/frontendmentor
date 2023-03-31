@@ -72,6 +72,21 @@
 		&--p2 {
 			background-image: url(../../assets/img/counter-yellow-large.svg);
 		}
+
+		&--victory {
+			position: relative;
+
+			&:before {
+				content: "";
+				@include absolutePos;
+				top: 2px;
+				width: 34px;
+				height: 34px;
+				margin: auto;
+				border: 6px solid $white;
+				border-radius: 50%;
+			}
+		}
 	}
 
 	&__token {

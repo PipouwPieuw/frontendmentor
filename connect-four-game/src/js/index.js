@@ -71,11 +71,15 @@ window.onload=function(){
     			.then(() => {
     				// Update grid array
     				grid[colIndex][cellIndex] = activePlayer;
-    				console.log(checkVictory(activePlayer, colIndex, cellIndex));
-		    		// Change player turn
-		    		changePlayer();
-		  			// Reset click actions on grid
-		  			document.body.style.pointerEvents = 'all';
+    				if(checkVictory(activePlayer, colIndex, cellIndex)) {
+    					console.log("VICTORY");
+    				}
+    				else {
+			    		// Change player turn
+			    		changePlayer();
+			  			// Reset click actions on grid
+			  			document.body.style.pointerEvents = 'all';
+			  		}
     			});
   		})
 	});
@@ -126,7 +130,7 @@ function checkVictory(player, col, cell) {
 		if(counter < 0 || grid[counter][cell] != player)
 			processLoop = false;
 		else
-			currentCells.push([counter, cell])
+			currentCells.push([counter, cell]);
 	}
 	// Check line after
 	counter = col;
@@ -136,11 +140,10 @@ function checkVictory(player, col, cell) {
 		if(counter >= gridW || grid[counter][cell] != player)
 			processLoop = false;
 		else
-			currentCells.push([counter, cell])
+			currentCells.push([counter, cell]);
 	}
-
 	if(currentCells.length >= 4)
-		return currentCells;
+		return markVictory(currentCells);
 
 	// Check column	
 	currentCells = [[col, cell]];
@@ -151,11 +154,78 @@ function checkVictory(player, col, cell) {
 		if(counter >= gridH || grid[col][counter] != player)
 			processLoop = false;
 		else
-			currentCells.push([counter, cell])
+			currentCells.push([col, counter]);
 	}
-
 	if(currentCells.length >= 4)
-		return currentCells;
+		return markVictory(currentCells);
 
 	// Check diagonals
+	// Bottom left to top right
+	currentCells = [[col, cell]];
+	currentCol = col;
+	currentCell = cell;
+	processLoop = true;
+	// Check diagonal before
+	while(processLoop) {
+		currentCol -= 1;
+		currentCell += 1;
+		if(currentCol < 0 || currentCell >= gridH || grid[currentCol][currentCell] != player)
+			processLoop = false;
+		else
+			currentCells.push([currentCol, currentCell]);
+	}
+	// Check diagonal after
+	currentCol = col;
+	currentCell = cell;
+	processLoop = true;
+	while(processLoop) {
+		currentCol += 1;
+		currentCell -= 1;
+		if(currentCol >= gridW || currentCell < 0 || grid[currentCol][currentCell] != player)
+			processLoop = false;
+		else
+			currentCells.push([currentCol, currentCell]);
+	}
+	if(currentCells.length >= 4)
+		return markVictory(currentCells);
+
+	// Top left to bottom right
+	currentCells = [[col, cell]];
+	currentCol = col;
+	currentCell = cell;
+	processLoop = true;
+	// Check diagonal before
+	while(processLoop) {
+		currentCol -= 1;
+		currentCell -= 1;
+		if(currentCol < 0 || currentCell < 0 || grid[currentCol][currentCell] != player)
+			processLoop = false;
+		else
+			currentCells.push([currentCol, currentCell]);
+	}
+	// Check diagonal after
+	currentCol = col;
+	currentCell = cell;
+	processLoop = true;
+	while(processLoop) {
+		currentCol += 1;
+		currentCell += 1;
+		if(currentCol >= gridW || currentCell >= gridH || grid[currentCol][currentCell] != player)
+			processLoop = false;
+		else
+			currentCells.push([currentCol, currentCell]);
+	}
+	if(currentCells.length >= 4)
+		return markVictory(currentCells);
+
+	// Return false if no victory condition is met
+	return false;
+}
+
+function markVictory(cells) {
+	for(index in cells) {
+		var [col, cell] = cells[index];
+		document.querySelector('.grid__col[data-index="' + col + '"] .grid__cell[data-index="' + cell + '"]').classList.add('grid__cell--victory');
+	}
+	return true;
 }
