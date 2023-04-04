@@ -1,0 +1,23 @@
+.victory_card {
+	@include box(rem(17px));
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: rem(286px);
+	position: relative;
+	z-index: 1;
+	margin-top: rem(-52px);
+
+	&__player {
+		@include headingXS;
+		margin-bottom: rem(-4px);
+	}
+
+	&__text {
+		@include headingL;
+	}
+
+	&__button {
+		@include cta;
+	}
+}

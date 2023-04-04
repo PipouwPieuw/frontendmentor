@@ -11,7 +11,7 @@
     <body>
         <main>
             <h1 class="sr_only">Connect four game</h1>
-            <div class="board board--neutral">
+            <div class="board board--neutral js_board">
                 <div class="board__container container">
                     <div class="player_card">
                         <img class="player_card__img" src="assets/img/player-one.svg" role="presentation" alt=""/>
@@ -34,16 +34,21 @@
                             <img class="grid__layer grid__layer--front" src="assets/img/board-layer-white-large.svg" role="presentation" alt=""/>
                         </div>
                         <div class="board__bottom">
-                        	<div class="timer_card">
+                        	<div class="timer_card js_timer">
                         		<span class="timer_card__label">Player <span id="current_player">1</span>'s turn</span>
                         		<span class="timer_card__countdown"><span id="countdown">30</span>s</span>
                         	</div>
+                            <div class="victory_card js_victory hidden">
+                                <span class="victory_card__player">Player <span class="js_winner--p1">1</span><span class="js_winner--p2">2</span></span>
+                                <span class="victory_card__text">wins</span>
+                                <button class="victory_card__button js_restart">Play again</button>
+                            </div>
                         </div>
                     </div>                     
                     <div class="player_card">
                         <img class="player_card__img" src="assets/img/player-two.svg" role="presentation" alt=""/>
                         <span class="player_card__label">Player 2</span>
-                        <span id="score_p1" class="player_card__score">0</span>
+                        <span id="score_p2" class="player_card__score">0</span>
                     </div>
                 </div>
             </div>
