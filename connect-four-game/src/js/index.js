@@ -3,6 +3,7 @@ var gridW = 7;
 var gridH = 6;
 //var grid = new Array(gridW).fill([...Array(gridH)]);
 var grid = [...new Array(gridW)].map(elem => new Array(gridH));
+var players = ['p1', 'p2'];
 var activePlayer = '';
 var defaultTimer = 30;
 var currentTimer = defaultTimer;
@@ -10,6 +11,7 @@ var countdown;
 var stopTimer = false;
 var scoreP1 = 0;
 var scoreP2 = 0;
+var gameActive = false;
 
 window.onload=function(){
 	// Initialize HTML grid
@@ -29,10 +31,7 @@ window.onload=function(){
 		gridElem.appendChild(gridCol);
 	}
 
-	// Initialize game
-	changePlayer();
-
-	// Click event
+	// Gameplay loop
 	document.querySelectorAll('.grid__col').forEach(gridCol => {
   		gridCol.addEventListener('click', event => {
   			// Return if column is filled
@@ -75,7 +74,7 @@ window.onload=function(){
     				grid[colIndex][cellIndex] = activePlayer;
     				if(!checkVictory(activePlayer, colIndex, cellIndex)) {
 			    		// Change player turn
-			    		changePlayer();
+			    		changePlayer(getNewPlayer());
 			  			// Reset click actions on grid
 			  			document.querySelector('.grid').style.pointerEvents = 'all';
     				}
@@ -83,15 +82,96 @@ window.onload=function(){
   		})
 	});
 
-	document.querySelector('.js_restart').addEventListener('click', resetGrid());
+	// Click events
+	document.querySelectorAll('.js_launch').forEach(elem => {
+		elem.addEventListener('click', function() { launchGame(); });
+	});
+	document.querySelectorAll('.js_restart').forEach(elem => {
+		elem.addEventListener('click', function() { resetGrid(); });
+	});
+	document.querySelectorAll('.js_reset').forEach(elem => {
+		elem.addEventListener('click', function() { resetGame(); });
+	});
+	document.querySelectorAll('.js_reset_pause').forEach(elem => {
+		elem.addEventListener('click', function() { resetGame();closePause(true); });
+	});
+	document.querySelectorAll('.js_open_pause').forEach(elem => {
+		elem.addEventListener('click', function() { openPause(); });
+	});
+	document.querySelectorAll('.js_close_pause').forEach(elem => {
+		elem.addEventListener('click', function() { closePause(); });
+	});
+	document.querySelectorAll('.js_quit').forEach(elem => {
+		elem.addEventListener('click', function() { closePause();quitGame(); });
+	});
+	document.querySelectorAll('.js_show_rules').forEach(elem => {
+		elem.addEventListener('click', function() { openRules(); });
+	});
+	document.querySelectorAll('.js_close_rules').forEach(elem => {
+		elem.addEventListener('click', function() { closeRules(); });
+	});
+}
+
+function launchGame() {
+	document.getElementById('modal_main').classList.remove('visible');
+	document.getElementById('modal_main_overlay').classList.remove('visible');
+	// Initialize game
+	changePlayer('p1');
+}
+
+function quitGame() {
+	document.getElementById('modal_main').classList.add('visible');
+	document.getElementById('modal_main_overlay').classList.add('visible');
+	resetGame(false);
+}
+
+function openPause() {
+	stopTimer = true;
+	document.getElementById('modal_pause').classList.add('visible');
+	document.getElementById('modal_pause_overlay').classList.add('visible');
+}
+
+function closePause(restart = false) {
+	document.getElementById('modal_pause').classList.remove('visible');
+	document.getElementById('modal_pause_overlay').classList.remove('visible');
+	if(gameActive && !restart)
+		launchTimer(false);
+}
+
+function openRules() {
+	document.getElementById('modal_rules').classList.add('visible');
+	document.getElementById('modal_rules_overlay').classList.add('visible');
+}
+
+function closeRules() {
+	document.getElementById('modal_rules').classList.remove('visible');
+	document.getElementById('modal_rules_overlay').classList.remove('visible');
+}
+
+function resetGame(relaunch = true) {
+	stopTimer = true;
+	gameActive = false;
+	resetGrid(false);
+	scoreP1 = 0;
+	scoreP2 = 0;
+	document.getElementById('score_p1').innerHTML = 0;
+	document.getElementById('score_p2').innerHTML = 0;
+	if(relaunch)
+		changePlayer('p1');
+
 }
 
 function changePlayer(player = '') {
 	if(player == '')
-		player = getNewPlayer();
+		player = players[0];
 	activePlayer = player;
 	document.body.setAttribute('data-player', activePlayer);
+	// Display player number
+	document.querySelector('.js_current_player--p1').classList.add('hidden');
+	document.querySelector('.js_current_player--p2').classList.add('hidden');
+	document.querySelector('.js_current_player--' + player).classList.remove('hidden');
 	// Launch timer
+	gameActive = true;
 	launchTimer();
 }
 
@@ -103,15 +183,22 @@ function sleep(ms) {
   	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function launchTimer() {	
-	clearInterval(countdown);
+function launchTimer(reset = true) {
 	var timerElem = document.getElementById('countdown');
-	currentTimer = defaultTimer;
-	timerElem.innerHTML = currentTimer;
+	if(reset) {
+		clearInterval(countdown);
+		currentTimer = defaultTimer;
+		timerElem.innerHTML = currentTimer;
+	}
 	stopTimer = false;
 	countdown = setInterval(() => {
-		if(currentTimer == 0 || stopTimer) {
+		if(currentTimer == 1 || stopTimer) {
 			clearInterval(countdown);
+			// If timer == 0, the other player wins the game
+			if(currentTimer == 1) {
+				document.querySelector('.grid').style.pointerEvents = 'none';
+				markVictory([], getNewPlayer());
+			}
 		}
 		else {
 			currentTimer--;
@@ -227,17 +314,23 @@ function checkVictory(player, col, cell) {
 }
 
 function markVictory(cells, player) {
+	gameActive = false;
+	// Display winning cells
 	for(index in cells) {
 		var [col, cell] = cells[index];
 		document.querySelector('.grid__col[data-index="' + col + '"] .grid__cell[data-index="' + cell + '"]').classList.add('grid__cell--victory');
 	}
+	// Set board to winner color
 	document.querySelector('.js_board').classList.remove('board--neutral');
 	document.querySelector('.js_board').classList.add('board--' + player);
+	// Set winner number
 	document.querySelector('.js_winner--p1').classList.add('hidden');
 	document.querySelector('.js_winner--p2').classList.add('hidden');
 	document.querySelector('.js_winner--' + player).classList.remove('hidden');
+	// Hide timer and show victory block
 	document.querySelector('.js_timer').classList.add('hidden');
 	document.querySelector('.js_victory').classList.remove('hidden');
+	// Update scores
 	if(player == "p1") {
 		scoreP1 +=1;
 		document.getElementById('score_p1').innerHTML = scoreP1;
@@ -249,7 +342,8 @@ function markVictory(cells, player) {
 	return true;
 }
 
-function resetGrid() {
+function resetGrid(relaunch = true) {
+	// Reset grid
 	grid = [...new Array(gridW)].map(elem => new Array(gridH));
 	document.querySelectorAll('.grid__col').forEach(elem => {
 		elem.classList.remove('grid__col--filled');
@@ -261,4 +355,19 @@ function resetGrid() {
 		elem.classList.remove('grid__cell--victory');
 	});
 	document.querySelector('.grid').style.pointerEvents = 'all';
+	// Hide victory block and show timer block
+	document.querySelector('.js_timer').classList.remove('hidden');
+	document.querySelector('.js_victory').classList.add('hidden');
+	// Reset board color
+	document.querySelector('.js_board').classList.remove('board--p1');
+	document.querySelector('.js_board').classList.remove('board--p2');
+	document.querySelector('.js_board').classList.add('board--neutral');
+	if(relaunch) {
+		// Change first player
+		players.push(players.shift());
+		changePlayer();
+	}
 }
+
+// TODO if stalemate nobody gets points, restart game
+// TODO AI game loop

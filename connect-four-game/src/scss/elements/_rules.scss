@@ -1,0 +1,39 @@
+.rules {
+
+	&__title {
+		@include headingS;
+		color: $purple;
+		margin-bottom: rem(16px);
+
+		&:not(:first-child) {
+			margin-top: rem(32px);
+		}
+	}
+
+	&__text {
+		@include body;
+		opacity: .88;
+	}
+
+	&__list {
+		counter-reset: list;
+	}
+
+	&__item {
+		padding-left: 27px;
+		counter-increment: list;
+		position: relative;
+
+		&:before {
+			content: counter(list);
+			@include headingXS;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: rem(10px);
+		}
+	}
+}

@@ -69,6 +69,7 @@ select {
 
 body {
   font-family: "Space Grotesk", sans-serif;
+  color: #000000;
 }
 
 .container {
@@ -109,6 +110,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
+  z-index: 9;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -125,14 +127,22 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
+  z-index: 9;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-.modal__overlay--opaque {
+.modal__overlay--dark {
   background: #5C2DD5;
+}
+.modal__overlay--light {
+  background: #7945FF;
+}
+.modal__overlay--transparent {
+  background: #000000;
+  opacity: 0.5;
 }
 .modal__overlay:not(.visible) {
   opacity: 0;
@@ -146,14 +156,60 @@ body {
 .modal__box {
   width: 30rem;
   max-width: 100%;
+  position: relative;
+}
+.modal__box--purple {
   background: #7945FF;
-  border-radius: 1.25rem;
+  border-radius: 2.5rem;
   border: 3px solid #000000;
   box-shadow: 0px 10px 0px #000000;
   padding: 4.1875rem 2.3125rem 3.5625rem 2.3125rem;
 }
+.modal__box--white {
+  background: #FFFFFF;
+  border-radius: 2.5rem;
+  border: 3px solid #000000;
+  box-shadow: 0px 10px 0px #000000;
+  padding: 1.875rem 2.125rem 3.375rem 2.125rem;
+}
 .modal__logo {
   margin: 0 auto 4.375rem auto;
+}
+.modal__title {
+  display: block;
+  font-size: 3.5rem;
+  line-height: 4.4375rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1.8125rem;
+}
+.modal__title--white {
+  color: #FFFFFF;
+  margin-bottom: 2.5625rem;
+}
+.modal__close {
+  position: absolute;
+  bottom: -2.625rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content;
+  padding: 0;
+}
+.modal__close_icon--hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.modal__close:hover .modal__close_icon--hover {
+  opacity: 1;
 }
 
 .menu__item:not(:last-child) {
@@ -527,6 +583,45 @@ body[data-player=p2] .timer_card:after {
 }
 .victory_card__button:hover {
   background: #FD6687;
+}
+
+.rules__title {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #7945FF;
+  margin-bottom: 1rem;
+}
+.rules__title:not(:first-child) {
+  margin-top: 2rem;
+}
+.rules__text {
+  font-size: 1rem;
+  line-height: 1.3125rem;
+  font-weight: 500;
+  opacity: 0.88;
+}
+.rules__list {
+  counter-reset: list;
+}
+.rules__item {
+  padding-left: 27px;
+  counter-increment: list;
+  position: relative;
+}
+.rules__item:before {
+  content: counter(list);
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.rules__item:not(:last-child) {
+  margin-bottom: 0.625rem;
 }
 
 /*# sourceMappingURL=main.css.map */

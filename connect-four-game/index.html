@@ -21,11 +21,11 @@
                     <div class="board__main">
                         <div class="board__top">
                             <div class="board__col">
-                                <button class="board__button">Menu</button>
+                                <button class="board__button js_open_pause">Menu</button>
                             </div>
                             <img class="board_logo" src="assets/img/logo.svg" role="presentation" alt=""/>
                             <div class="board__col">
-                                <button class="board__button">Restart</button>
+                                <button class="board__button js_reset">Restart</button>
                             </div>
                         </div>
                         <div class="grid">
@@ -35,11 +35,11 @@
                         </div>
                         <div class="board__bottom">
                         	<div class="timer_card js_timer">
-                        		<span class="timer_card__label">Player <span id="current_player">1</span>'s turn</span>
+                        		<span class="timer_card__label">Player <span class="js_current_player js_current_player--p1">1</span><span class="js_current_player js_current_player--p2">2</span>'s turn</span>
                         		<span class="timer_card__countdown"><span id="countdown">30</span>s</span>
                         	</div>
                             <div class="victory_card js_victory hidden">
-                                <span class="victory_card__player">Player <span class="js_winner--p1">1</span><span class="js_winner--p2">2</span></span>
+                                <span class="victory_card__player">Player <span class="js_winner js_winner--p1">1</span><span class="js_winner js_winner--p2">2</span></span>
                                 <span class="victory_card__text">wins</span>
                                 <button class="victory_card__button js_restart">Play again</button>
                             </div>
@@ -52,34 +52,96 @@
                     </div>
                 </div>
             </div>
-            <!-- <div id="modal_main_overlay" class="modal__overlay modal__overlay--opaque visible">
+            <!-- MODAL MAIN -->
+            <div id="modal_main_overlay" class="modal__overlay modal__overlay--dark visible"></div>
             <div id="modal_main" class="modal visible">
-                <div class="modal__box">
+                <div class="modal__box modal__box--purple">
                     <img class="modal__logo" src="assets/img/logo.svg" role="presentation" alt=""/>
                     <nav aria-labelledby="main_menu_label">
                         <span id="main_menu_label" class="sr_only">Main menu</span>
                         <ul class="menu menu_main">
                             <li class="menu__item">
-                                <button class="menu__button menu__button--left menu__button--red menu__button--cpu">
+                                <button class="menu__button menu__button--left menu__button--red menu__button--cpu js_launch js_launch--cpu">
                                     <span>Play vs CPU</span>
                                     <img src="assets/img/player-vs-cpu.svg" role="presentation" alt=""/>
                                 </button>
                             </li>
                             <li class="menu__item">
-                                <button class="menu__button menu__button--left menu__button--yellow menu__button--player">
+                                <button class="menu__button menu__button--left menu__button--yellow menu__button--player js_launch js_launch--player">
                                     <span>Play vs player</span>
                                     <img src="assets/img/player-vs-player.svg" role="presentation" alt=""/>
                                 </button>
                             </li>
                             <li class="menu__item">
-                                <button class="menu__button menu__button--left">
+                                <button class="menu__button menu__button--left js_show_rules">
                                     <span>Game rules</span>
                                 </button>
                             </li>
                         </ul>
                     </nav>
                 </div>
-            </div> -->
+            </div>
+            <!-- END MODAL MAIN -->
+            <!-- MODAL PAUSE MENU -->
+            <div id="modal_pause_overlay" class="modal__overlay modal__overlay--transparent"></div>
+            <div id="modal_pause" class="modal">
+                <div class="modal__box modal__box--purple">
+                    <span class="modal__title modal__title--white">Pause</span>
+                    <nav aria-labelledby="main_menu_label">
+                        <span id="main_menu_label" class="sr_only">Pause menu</span>
+                        <ul class="menu menu_main">
+                            <li class="menu__item">
+                                <button class="menu__button js_close_pause">
+                                    <span>Continue game</span>
+                                </button>
+                            </li>
+                            <li class="menu__item">
+                                <button class="menu__button js_reset_pause">
+                                    <span>Restart</span>
+                                </button>
+                            </li>
+                            <li class="menu__item">
+                                <button class="menu__button menu__button--red js_quit">
+                                    <span>Quit game</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- END MODAL PAUSE MENU -->
+            <!-- MODAL RULES -->
+            <div id="modal_rules_overlay" class="modal__overlay modal__overlay--light"></div>
+            <div id="modal_rules" class="modal">
+                <div class="modal__box modal__box--white">
+                    <span class="modal__title">Rules</span>
+                    <div class="rules">
+                        <h2 class="rules__title">Objective</h2>
+                        <p class="rules__text">Be the first player to connect 4 of the same colored discs in a row (either vertically, horizontally, or diagonally).</p>
+                        <h2 class="rules__title">How to play</h2>
+                        <ol class="rules__list">
+                            <li class="rules__item">
+                                <p class="rules__text">Red goes first in the first game.</p>
+                            </li>
+                            <li class="rules__item">
+                                <p class="rules__text">Players must alternate turns, and only one disc can be dropped in each turn. </p>
+                            </li>
+                            <li class="rules__item">
+                                <p class="rules__text">The game ends when there is a 4-in-a-row or a stalemate.</p>
+                            </li>
+                            <li class="rules__item">
+                                <p class="rules__text">The starter of the previous game goes second on the next game.</p>
+                            </li>
+                        </ol>
+                    </div>
+                    <button class="modal__close js_close_rules">
+                        <img class="modal__close_icon" src="assets/img/icon-check.svg" role="presentation" alt="" aria-hidden="true"/>
+                        <img class="modal__close_icon modal__close_icon--hover" src="assets/img/icon-check-hover.svg" role="presentation" alt="" aria-hidden="true"/>
+                        <span class="sr_only">Close rules</span>
+                    </button>
+                </div>
+            </div>
+            <!-- END MODAL RULES -->
         </main>
     </body>
 </html>

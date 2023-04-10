@@ -1,5 +1,6 @@
 .modal {
 	@include fixedPos;
+	z-index: 9;
 	@include transition($transition);
 	display: flex;
 	align-items: center;
@@ -8,10 +9,20 @@
 
 	&__overlay {
 		@include fixedPos;
+		z-index: 9;
 		@include transition($transition);
 
-		&--opaque {
+		&--dark {
 			background: $darkPurple;
+		}
+
+		&--light {
+			background: $purple;
+		}
+
+		&--transparent {
+			background: $black;
+			opacity: .5;
 		}
 
 		&:not(.visible) {
@@ -29,10 +40,55 @@
 	&__box {
 		width:rem(480px);
 		max-width: 100%;
-		@include box(rem(67px) rem(37px) rem(57px) rem(37px), $purple);
+		position: relative;
+
+		&--purple {
+			@include box(rem(67px) rem(37px) rem(57px) rem(37px), $purple, rem(40px));
+		}
+
+		&--white {
+			@include box(rem(30px) rem(34px) rem(54px) rem(34px), $white, rem(40px));
+		}
 	}
 
 	&__logo {
 		margin: 0 auto rem(70px) auto;
+	}
+
+	&__title {
+		display: block;
+		@include headingL;
+		text-align: center;
+		margin-bottom: rem(29px);
+
+		&--white {
+			color: $white;
+			margin-bottom: rem(41px);	
+		}
+	}
+
+	&__close {
+		position: absolute;
+		bottom: rem(-42px);
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: fit-content;
+		padding: 0;
+
+		&_icon {
+
+			&--hover {
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				@include transition($transition);
+			}
+		}
+
+		&:hover &_icon--hover {
+			opacity: 1;
+		}
 	}
 }
