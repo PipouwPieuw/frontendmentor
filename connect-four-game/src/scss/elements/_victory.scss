@@ -10,6 +10,7 @@
 
 	&__player {
 		@include headingXS;
+		min-height: rem(20px);
 		margin-bottom: rem(-4px);
 	}
 

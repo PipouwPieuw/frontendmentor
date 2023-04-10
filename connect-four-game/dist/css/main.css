@@ -557,6 +557,7 @@ body[data-player=p2] .timer_card:after {
   line-height: 1.25rem;
   font-weight: 700;
   text-transform: uppercase;
+  min-height: 1.25rem;
   margin-bottom: -0.25rem;
 }
 .victory_card__text {

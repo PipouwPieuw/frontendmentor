@@ -73,10 +73,16 @@ window.onload=function(){
     				// Update grid array
     				grid[colIndex][cellIndex] = activePlayer;
     				if(!checkVictory(activePlayer, colIndex, cellIndex)) {
-			    		// Change player turn
-			    		changePlayer(getNewPlayer());
-			  			// Reset click actions on grid
-			  			document.querySelector('.grid').style.pointerEvents = 'all';
+    					// If stalemate end game
+    					if(checkStalemate()) {
+    						markVictory([], 'neutral', true);
+    					}
+    					else {
+				    		// Change player turn
+				    		changePlayer(getNewPlayer());
+				  			// Reset click actions on grid
+				  			document.querySelector('.grid').style.pointerEvents = 'all';
+				  		}
     				}
     			});
   		})
@@ -307,39 +313,48 @@ function checkVictory(player, col, cell) {
 	if(tempCells.length >= 3)
 		currentCells.push(...tempCells);
 
-	if(currentCells.length >= 4)
-		return markVictory(currentCells, player);
+	if(currentCells.length >= 4) {
+		markVictory(currentCells, player);
+		return true;
+	}
 	else
 		return false;
 }
 
-function markVictory(cells, player) {
+function markVictory(cells, player, isStalemate = false) {
 	gameActive = false;
 	// Display winning cells
 	for(index in cells) {
 		var [col, cell] = cells[index];
 		document.querySelector('.grid__col[data-index="' + col + '"] .grid__cell[data-index="' + cell + '"]').classList.add('grid__cell--victory');
 	}
-	// Set board to winner color
-	document.querySelector('.js_board').classList.remove('board--neutral');
-	document.querySelector('.js_board').classList.add('board--' + player);
-	// Set winner number
-	document.querySelector('.js_winner--p1').classList.add('hidden');
-	document.querySelector('.js_winner--p2').classList.add('hidden');
-	document.querySelector('.js_winner--' + player).classList.remove('hidden');
-	// Hide timer and show victory block
+	if(!isStalemate) {
+		// Set board to winner color
+		document.querySelector('.js_board').classList.remove('board--neutral');
+		document.querySelector('.js_board').classList.add('board--' + player);
+		// Set winner number
+		document.querySelector('.js_winner--p1').classList.add('hidden');
+		document.querySelector('.js_winner--p2').classList.add('hidden');
+		document.querySelector('.js_winner--' + player).classList.remove('hidden');
+		// Show victory block
+		document.querySelector('.js_victory').classList.remove('hidden');
+		// Update scores
+		if(player == "p1") {
+			scoreP1 +=1;
+			document.getElementById('score_p1').innerHTML = scoreP1;
+		}
+		else {		
+			scoreP2 +=1;
+			document.getElementById('score_p2').innerHTML = scoreP2;
+		}
+	}
+	else {
+		// Show stalemate block
+		document.querySelector('.js_stalemate').classList.remove('hidden');
+	}
+	// Hide timer
 	document.querySelector('.js_timer').classList.add('hidden');
-	document.querySelector('.js_victory').classList.remove('hidden');
-	// Update scores
-	if(player == "p1") {
-		scoreP1 +=1;
-		document.getElementById('score_p1').innerHTML = scoreP1;
-	}
-	else {		
-		scoreP2 +=1;
-		document.getElementById('score_p2').innerHTML = scoreP2;
-	}
-	return true;
+	//return true;
 }
 
 function resetGrid(relaunch = true) {
@@ -358,6 +373,7 @@ function resetGrid(relaunch = true) {
 	// Hide victory block and show timer block
 	document.querySelector('.js_timer').classList.remove('hidden');
 	document.querySelector('.js_victory').classList.add('hidden');
+	document.querySelector('.js_stalemate').classList.add('hidden');
 	// Reset board color
 	document.querySelector('.js_board').classList.remove('board--p1');
 	document.querySelector('.js_board').classList.remove('board--p2');
@@ -367,6 +383,11 @@ function resetGrid(relaunch = true) {
 		players.push(players.shift());
 		changePlayer();
 	}
+}
+
+function checkStalemate() {
+	var query = document.querySelectorAll('.grid__col:not(.grid__col--filled)');
+	return query.length == 0;
 }
 
 // TODO if stalemate nobody gets points, restart game
