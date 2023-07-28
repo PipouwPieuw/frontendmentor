@@ -51,7 +51,8 @@
                         </div>
                     </div>                     
                     <div class="player_card">
-                        <img class="player_card__img" src="assets/img/player-two.svg" role="presentation" alt=""/>
+                        <img id="avatar_p2" class="player_card__img player_card__img--p2" src="assets/img/player-two.svg" role="presentation" alt=""/>
+                        <img id="avatar_cpu" class="player_card__img player_card__img--p2" src="assets/img/cpu.svg" role="presentation" alt=""/>
                         <span class="player_card__label">Player 2</span>
                         <span id="score_p2" class="player_card__score">0</span>
                     </div>
@@ -66,13 +67,13 @@
                         <span id="main_menu_label" class="sr_only">Main menu</span>
                         <ul class="menu menu_main">
                             <li class="menu__item">
-                                <button class="menu__button menu__button--left menu__button--red menu__button--cpu js_launch js_launch--cpu">
+                                <button class="menu__button menu__button--left menu__button--red menu__button--cpu js_launch_cpu">
                                     <span>Play vs CPU</span>
                                     <img src="assets/img/player-vs-cpu.svg" role="presentation" alt=""/>
                                 </button>
                             </li>
                             <li class="menu__item">
-                                <button class="menu__button menu__button--left menu__button--yellow menu__button--player js_launch js_launch--player">
+                                <button class="menu__button menu__button--left menu__button--yellow menu__button--player js_launch_player">
                                     <span>Play vs player</span>
                                     <img src="assets/img/player-vs-player.svg" role="presentation" alt=""/>
                                 </button>

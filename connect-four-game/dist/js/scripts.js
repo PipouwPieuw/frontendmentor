@@ -12,6 +12,7 @@ var stopTimer = false;
 var scoreP1 = 0;
 var scoreP2 = 0;
 var gameActive = false;
+var gameMode = '';
 
 window.onload=function(){
 	// Initialize HTML grid
@@ -89,8 +90,11 @@ window.onload=function(){
 	});
 
 	// Click events
-	document.querySelectorAll('.js_launch').forEach(elem => {
-		elem.addEventListener('click', function() { launchGame(); });
+	document.querySelectorAll('.js_launch_player').forEach(elem => {
+		elem.addEventListener('click', function() { launchGame('player'); });
+	});
+	document.querySelectorAll('.js_launch_cpu').forEach(elem => {
+		elem.addEventListener('click', function() { launchGame('cpu'); });
 	});
 	document.querySelectorAll('.js_restart').forEach(elem => {
 		elem.addEventListener('click', function() { resetGrid(); });
@@ -118,7 +122,19 @@ window.onload=function(){
 	});
 }
 
-function launchGame() {
+function launchGame(mode) {
+	// Set game mode
+	gameMode = mode;
+	// Show p2 avatar
+	if(gameMode == 'player') {
+		document.getElementById('avatar_p2').classList.add('visible');
+		document.getElementById('avatar_cpu').classList.remove('visible');
+	}
+	else {
+		document.getElementById('avatar_p2').classList.remove('visible');
+		document.getElementById('avatar_cpu').classList.add('visible');
+	}
+	// Hide modals
 	document.getElementById('modal_main').classList.remove('visible');
 	document.getElementById('modal_main_overlay').classList.remove('visible');
 	// Initialize game
@@ -176,9 +192,14 @@ function changePlayer(player = '') {
 	document.querySelector('.js_current_player--p1').classList.add('hidden');
 	document.querySelector('.js_current_player--p2').classList.add('hidden');
 	document.querySelector('.js_current_player--' + player).classList.remove('hidden');
-	// Launch timer
-	gameActive = true;
-	launchTimer();
+	if(activePlayer == 'p2' && gameMode == 'cpu') {
+		cpuTurn();
+	}
+	else {
+		// Launch timer
+		gameActive = true;
+		launchTimer();
+	}
 }
 
 function getNewPlayer() {
@@ -321,6 +342,109 @@ function checkVictory(player, col, cell) {
 		return false;
 }
 
+function setCellScore(player, col, cell) {
+	var maxScore = 0;
+	var tempCells = [];
+	var processLoop = true;
+	var counter = col;
+
+	// Check line before
+	while(processLoop) {
+		counter -= 1;
+		if(counter < 0 || grid[counter][cell] != player)
+			processLoop = false;
+		else
+			tempCells.push([counter, cell]);
+	}
+	// Check line after
+	counter = col;
+	processLoop = true;
+	while(processLoop) {
+		counter += 1;
+		if(counter >= gridW || grid[counter][cell] != player)
+			processLoop = false;
+		else
+			tempCells.push([counter, cell]);
+	}
+	if(tempCells.length > maxScore)
+		maxScore = tempCells.length;
+
+	// Check column	
+	tempCells = [];
+	counter = cell;
+	processLoop = true;
+	while(processLoop) {
+		counter += 1;
+		if(counter >= gridH || grid[col][counter] != player)
+			processLoop = false;
+		else
+			tempCells.push([col, counter]);
+	}
+	if(tempCells.length > maxScore)
+		maxScore = tempCells.length;
+
+	// Check diagonals
+	// Bottom left to top right
+	tempCells = [];
+	currentCol = col;
+	currentCell = cell;
+	processLoop = true;
+	// Check diagonal before
+	while(processLoop) {
+		currentCol -= 1;
+		currentCell += 1;
+		if(currentCol < 0 || currentCell >= gridH || grid[currentCol][currentCell] != player)
+			processLoop = false;
+		else
+			tempCells.push([currentCol, currentCell]);
+	}
+	// Check diagonal after
+	currentCol = col;
+	currentCell = cell;
+	processLoop = true;
+	while(processLoop) {
+		currentCol += 1;
+		currentCell -= 1;
+		if(currentCol >= gridW || currentCell < 0 || grid[currentCol][currentCell] != player)
+			processLoop = false;
+		else
+			tempCells.push([currentCol, currentCell]);
+	}
+	if(tempCells.length > maxScore)
+		maxScore = tempCells.length;
+
+	// Top left to bottom right
+	tempCells = [];
+	currentCol = col;
+	currentCell = cell;
+	processLoop = true;
+	// Check diagonal before
+	while(processLoop) {
+		currentCol -= 1;
+		currentCell -= 1;
+		if(currentCol < 0 || currentCell < 0 || grid[currentCol][currentCell] != player)
+			processLoop = false;
+		else
+			tempCells.push([currentCol, currentCell]);
+	}
+	// Check diagonal after
+	currentCol = col;
+	currentCell = cell;
+	processLoop = true;
+	while(processLoop) {
+		currentCol += 1;
+		currentCell += 1;
+		if(currentCol >= gridW || currentCell >= gridH || grid[currentCol][currentCell] != player)
+			processLoop = false;
+		else
+			tempCells.push([currentCol, currentCell]);
+	}
+	if(tempCells.length > maxScore)
+		maxScore = tempCells.length;
+
+	return maxScore;
+}
+
 function markVictory(cells, player, isStalemate = false) {
 	gameActive = false;
 	// Display winning cells
@@ -390,5 +514,43 @@ function checkStalemate() {
 	return query.length == 0;
 }
 
-// TODO if stalemate nobody gets points, restart game
 // TODO AI game loop
+
+/*
+
+Stocker chaque position possible et leur donner un score en fonction de l'alignement qu'elles permettent d'effectuer.
+Les positions plus basses sont plus avantageuses et priment à score égal.
+Si plusieurs positions ont le même score, en choisir une de manière random. 
+
+*/
+
+function cpuTurn() {
+	var indexes = [];
+	var scores = [];
+	var bestCells = [];
+	document.querySelectorAll('.grid__col').forEach(gridCol => {
+		// Return if column is filled
+  		if(gridCol.classList.contains('grid__col--filled'))
+  			return false;
+  		// Get column index
+  		var colIndex = parseInt(gridCol.getAttribute('data-index'));
+  		// Get bottom empty cell
+  		var query = gridCol.querySelectorAll('.grid__cell:not(.grid__cell--filled)');
+    	var targetCell = query[query.length-1];
+    	// Get cell index
+    	var cellIndex = parseInt(targetCell.getAttribute('data-index'));
+    	// Get cell score
+    	var cellScore = setCellScore(activePlayer, colIndex, cellIndex);
+    	indexes.push(colIndex);
+    	scores.push(cellScore);
+	});
+	var maxScore = Math.max(...scores);
+	for(let i=0; i<indexes.length; i++)
+		if(scores[i] == maxScore)
+			bestCells.push(indexes[i]);
+	shuffledBestCells = bestCells.sort((a, b) => 0.5 - Math.random());
+	var playedCell = shuffledBestCells[0];
+	document.querySelectorAll('.grid__col[data-index="' + playedCell + '"]').forEach(elem => {
+		elem.click();
+	});
+}

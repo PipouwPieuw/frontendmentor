@@ -9,6 +9,10 @@
 	&__img {
 		margin-top: rem(-27px);
 		margin-bottom: rem(14px);
+
+		&--p2:not(.visible) {
+			display: none;
+		}
 	}
 
 	&__label {

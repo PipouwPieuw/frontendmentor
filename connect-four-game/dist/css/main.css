@@ -343,6 +343,9 @@ body {
   margin-top: -1.6875rem;
   margin-bottom: 0.875rem;
 }
+.player_card__img--p2:not(.visible) {
+  display: none;
+}
 .player_card__label {
   font-size: 1.25rem;
   line-height: 1.625rem;
